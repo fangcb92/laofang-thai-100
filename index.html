@@ -208,6 +208,12 @@
       color: var(--text);
     }
 
+    .english {
+      margin: 0 0 4px;
+      color: #425466;
+      font-weight: 700;
+    }
+
     .usage {
       margin: 0;
       color: var(--muted);
@@ -234,10 +240,20 @@
       padding: 12px;
       background: #fbfcfa;
       min-height: 126px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 38px;
+      gap: 8px;
+      align-items: start;
     }
 
     .word .thai {
       font-size: 22px;
+    }
+
+    .word .sound {
+      width: 38px;
+      height: 38px;
+      font-size: 15px;
     }
 
     .task-box {
@@ -436,6 +452,16 @@
       .sound {
         width: 100%;
         border-radius: 8px;
+      }
+
+      .word {
+        grid-template-columns: minmax(0, 1fr) 44px;
+      }
+
+      .word .sound {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
       }
     }
   </style>
@@ -996,6 +1022,109 @@
       "直播间要转化，老板也要敢说泰语。"
     ];
 
+    const englishMeanings = {
+      "你好": "Hello.",
+      "我叫老方": "My name is Lao Fang.",
+      "很高兴认识你": "Nice to meet you.",
+      "你叫什么名字？": "What is your name?",
+      "我是中国人": "I am Chinese.",
+      "谢谢": "Thank you.",
+      "非常感谢": "Thank you very much.",
+      "没关系": "No problem.",
+      "对不起，不好意思": "Sorry. Excuse me.",
+      "麻烦你一下": "Please help me for a moment.",
+      "是的": "Yes.",
+      "不是": "No. That is not right.",
+      "我不明白": "I do not understand.",
+      "可以说慢一点吗？": "Can you speak more slowly?",
+      "请再说一遍": "Please say it again.",
+      "多少钱？": "How much is it?",
+      "太贵了": "It is too expensive.",
+      "可以便宜一点吗？": "Can it be cheaper?",
+      "我要这个": "I want this one.",
+      "不要了，谢谢": "I do not want it, thank you.",
+      "请给我菜单": "Please give me the menu.",
+      "我要一瓶矿泉水": "I want one bottle of water.",
+      "不要辣": "Not spicy, please.",
+      "很好吃": "It is very delicious.",
+      "请结账": "Please bring the bill.",
+      "去这里": "Go here, please.",
+      "左转": "Turn left.",
+      "右转": "Turn right.",
+      "停在这里": "Stop here, please.",
+      "要多久？": "How long will it take?",
+      "现在几点？": "What time is it now?",
+      "明天见": "See you tomorrow.",
+      "我今天没空": "I am not free today.",
+      "可以约几点？": "What time can we make an appointment?",
+      "我会晚到一点": "I will arrive a little late.",
+      "有袋子吗？": "Do you have a bag?",
+      "可以付现金吗？": "Can I pay cash?",
+      "可以转账吗？": "Can I transfer the money?",
+      "请给我收据": "Please give me a receipt.",
+      "一共多少钱？": "How much is it in total?",
+      "洗手间在哪里？": "Where is the restroom?",
+      "去 BTS 怎么走？": "How do I get to the BTS?",
+      "近吗？": "Is it near?",
+      "远吗？": "Is it far?",
+      "可以走路去吗？": "Can I walk there?",
+      "请帮帮我": "Please help me.",
+      "我迷路了": "I am lost.",
+      "可以帮我打电话给警察吗？": "Can you call the police for me?",
+      "我需要去医院": "I need to go to the hospital.",
+      "我把东西忘在这里了": "I left something here.",
+      "我住在这个公寓": "I live in this condo.",
+      "门禁卡不能用了": "The key card does not work.",
+      "请帮我开一下门": "Please open the door for me.",
+      "有我的快递吗？": "Do I have a parcel?",
+      "维修师傅几点来？": "What time will the technician come?",
+      "有这个吗？": "Do you have this?",
+      "在哪里？": "Where is it?",
+      "请给我吸管": "Please give me a straw.",
+      "请帮我加热一下": "Please heat it up for me.",
+      "不要袋子": "No bag, please.",
+      "我在楼前": "I am in front of the building.",
+      "可以放在大厅": "You can leave it in the lobby.",
+      "可以打电话给我": "You can call me.",
+      "我下去拿": "I will go down to pick it up.",
+      "不好意思，我来晚了": "Sorry, I came late.",
+      "有插座吗？": "Is there a power outlet?",
+      "请给我 Wi-Fi": "Please give me the Wi-Fi.",
+      "可以坐这里吗？": "Can I sit here?",
+      "我要一杯冰咖啡": "I want one iced coffee.",
+      "少糖": "Less sweet, please.",
+      "剪短一点点": "Cut it a little shorter.",
+      "按原来的发型": "Keep the same hairstyle.",
+      "不要剪太短": "Do not cut it too short.",
+      "请刮胡子": "Please shave my beard.",
+      "可以了，谢谢": "That is good, thank you.",
+      "我头疼": "I have a headache.",
+      "我喉咙痛": "I have a sore throat.",
+      "有止痛药吗？": "Do you have painkillers?",
+      "药一天吃几次？": "How many times a day should I take the medicine?",
+      "我对这个药过敏": "I am allergic to this medicine.",
+      "可以办会员吗？": "Can I sign up for a membership?",
+      "一个月多少钱？": "How much is it per month?",
+      "有教练吗？": "Do you have a trainer?",
+      "我想减肥": "I want to lose weight.",
+      "今天我很累": "I am very tired today.",
+      "今天怎么样？": "How is your day?",
+      "一起去吃饭吗？": "Do you want to eat together?",
+      "我喜欢泰国菜": "I like Thai food.",
+      "天气很热": "The weather is very hot.",
+      "下次见": "See you next time.",
+      "我来取快递": "I came to pick up a parcel.",
+      "需要签名吗？": "Do I need to sign?",
+      "可以寄东西到中国吗？": "Can I send things to China?",
+      "运费多少钱？": "How much is the shipping fee?",
+      "这个东西易碎": "This item is fragile.",
+      "这个周末你去哪儿？": "Where are you going this weekend?",
+      "我想去逛商场": "I want to go walk around the mall.",
+      "一起去吗？": "Do you want to go together?",
+      "我得工作": "I have to work.",
+      "好好休息": "Have a good rest."
+    };
+
     let currentDay = Number(localStorage.getItem("laofangThai100CurrentDay")) || 1;
     let currentQuizPhrase = null;
 
@@ -1058,6 +1187,12 @@
       return lessons.find((lesson) => lesson.day === day) || lessons[0];
     }
 
+    function getEnglishMeaning(phrase) {
+      if (phrase.english) return phrase.english;
+      if (englishMeanings[phrase.chinese]) return englishMeanings[phrase.chinese];
+      return `Literal English: ${phrase.chinese}`;
+    }
+
     function speakThai(text) {
       if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
         alert("你的浏览器不支持 Web Speech API 发音功能，请换 Chrome 或 Edge 试试。");
@@ -1105,6 +1240,7 @@
             <p class="thai">${phrase.thai}</p>
             <p class="roman">${phrase.roman}</p>
             <p class="chinese">${index + 1}. ${phrase.chinese}</p>
+            <p class="english">${getEnglishMeaning(phrase)}</p>
             <p class="usage">使用场景：${phrase.usage}</p>
           </div>
           <button class="sound" data-speak="${escapeHtml(phrase.thai)}" aria-label="播放泰语发音">▶</button>
@@ -1113,9 +1249,12 @@
 
       document.getElementById("wordList").innerHTML = lesson.words.map((word) => `
         <div class="word">
-          <p class="thai">${word.thai}</p>
-          <p class="roman">${word.roman}</p>
-          <p class="chinese">${word.chinese}</p>
+          <div>
+            <p class="thai">${word.thai}</p>
+            <p class="roman">${word.roman}</p>
+            <p class="chinese">${word.chinese}</p>
+          </div>
+          <button class="sound" data-speak="${escapeHtml(word.thai)}" aria-label="播放单词发音">▶</button>
         </div>
       `).join("");
 
@@ -1181,7 +1320,7 @@
         `主题：${lesson.theme}`,
         "",
         "今日5句泰语：",
-        ...lesson.phrases.map((phrase, index) => `${index + 1}. ${phrase.thai}\n中文：${phrase.chinese}\n发音：${phrase.roman}\n场景：${phrase.usage}`),
+        ...lesson.phrases.map((phrase, index) => `${index + 1}. ${phrase.thai}\n中文：${phrase.chinese}\n英文：${getEnglishMeaning(phrase)}\n发音：${phrase.roman}\n场景：${phrase.usage}`),
         "",
         "今日5个单词：",
         ...lesson.words.map((word, index) => `${index + 1}. ${word.thai}｜${word.chinese}｜${word.roman}`),
