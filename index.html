@@ -1193,17 +1193,59 @@
       return `Literal English: ${phrase.chinese}`;
     }
 
-    function speakThai(text) {
+    function loadVoices() {
+      return new Promise((resolve) => {
+        if (!("speechSynthesis" in window)) {
+          resolve([]);
+          return;
+        }
+
+        const voices = window.speechSynthesis.getVoices();
+        if (voices.length) {
+          resolve(voices);
+          return;
+        }
+
+        const timer = window.setTimeout(() => resolve(window.speechSynthesis.getVoices()), 1200);
+        window.speechSynthesis.onvoiceschanged = () => {
+          window.clearTimeout(timer);
+          resolve(window.speechSynthesis.getVoices());
+        };
+      });
+    }
+
+    async function speakThai(text) {
       if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
         alert("你的浏览器不支持 Web Speech API 发音功能，请换 Chrome 或 Edge 试试。");
         return;
       }
 
       window.speechSynthesis.cancel();
+      const voices = await loadVoices();
+      const thaiVoice = voices.find((voice) => voice.lang && voice.lang.toLowerCase().startsWith("th"))
+        || voices.find((voice) => voice.name && voice.name.toLowerCase().includes("thai"));
+
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "th-TH";
+      if (thaiVoice) utterance.voice = thaiVoice;
       utterance.rate = 0.82;
+      utterance.onstart = () => showToast("正在播放泰语发音");
+      utterance.onend = () => showToast("播放完成");
+      utterance.onerror = () => {
+        showToast("播放失败：请检查浏览器声音和系统语音包");
+      };
+
+      if (!thaiVoice && voices.length) {
+        showToast("未找到泰语语音包，先用浏览器默认语音尝试播放");
+      }
+
       window.speechSynthesis.speak(utterance);
+
+      window.setTimeout(() => {
+        if (!window.speechSynthesis.speaking && !window.speechSynthesis.pending) {
+          showToast("没有听到声音？请检查电脑音量或安装泰语语音包");
+        }
+      }, 700);
     }
 
     function showToast(message) {
