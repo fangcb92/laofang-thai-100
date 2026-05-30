@@ -324,6 +324,22 @@
       background: #fbfcfa;
     }
 
+    .review-phrase {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 38px;
+      gap: 8px;
+      align-items: start;
+      padding-top: 8px;
+      margin-top: 8px;
+      border-top: 1px solid var(--line);
+    }
+
+    .review-phrase .sound {
+      width: 38px;
+      height: 38px;
+      font-size: 15px;
+    }
+
     .review-origin {
       margin: 0 0 8px;
       color: var(--muted);
@@ -459,6 +475,16 @@
       }
 
       .word .sound {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+      }
+
+      .review-phrase {
+        grid-template-columns: minmax(0, 1fr) 44px;
+      }
+
+      .review-phrase .sound {
         width: 44px;
         height: 44px;
         border-radius: 50%;
@@ -1329,8 +1355,13 @@
             <div class="review-item">
               <p class="review-origin">${offset.label} · Day ${reviewDay} · ${lesson.theme}</p>
               ${lesson.phrases.map((phrase) => `
-                <p class="thai">${phrase.thai}</p>
-                <p class="chinese">${phrase.chinese}</p>
+                <div class="review-phrase">
+                  <div>
+                    <p class="thai">${phrase.thai}</p>
+                    <p class="chinese">${phrase.chinese}</p>
+                  </div>
+                  <button class="sound" data-speak="${escapeHtml(phrase.thai)}" aria-label="播放复习句子发音">▶</button>
+                </div>
               `).join("")}
             </div>
           `;
