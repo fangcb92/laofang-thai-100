@@ -1,0 +1,1341 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>老方泰语100天计划</title>
+  <style>
+    :root {
+      --bg: #f5f7f3;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #65717d;
+      --line: #dbe2da;
+      --primary: #176b55;
+      --primary-dark: #0f4d3d;
+      --accent: #f0b429;
+      --soft: #edf5f1;
+      --danger: #b23b3b;
+      --shadow: 0 14px 36px rgba(20, 33, 26, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .app {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 18px 14px 48px;
+    }
+
+    .topbar {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #edf5f1 100%);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(28px, 6vw, 46px);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .slogan {
+      margin: 0;
+      color: var(--primary);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn,
+    .select {
+      min-height: 44px;
+      border-radius: 8px;
+      padding: 10px 13px;
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow: 0 5px 14px rgba(20, 33, 26, 0.05);
+      transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn.primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn.ghost {
+      background: var(--soft);
+      color: var(--primary-dark);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.8fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .lesson-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .day-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: #fff7df;
+      color: #6f4d00;
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .meta {
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.25;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .phrase-list,
+    .word-list,
+    .review-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .phrase {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfcfa;
+    }
+
+    .thai {
+      margin: 0 0 6px;
+      font-size: 25px;
+      line-height: 1.25;
+      font-weight: 800;
+      letter-spacing: 0;
+      font-family: "Leelawadee UI", "Noto Sans Thai", "Tahoma", sans-serif;
+    }
+
+    .roman {
+      margin: 0 0 6px;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .chinese {
+      margin: 0 0 4px;
+      color: var(--text);
+    }
+
+    .usage {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .sound {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 18px;
+      align-self: start;
+    }
+
+    .word-list {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .word {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfa;
+      min-height: 126px;
+    }
+
+    .word .thai {
+      font-size: 22px;
+    }
+
+    .task-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #f2d184;
+      background: #fff8e6;
+    }
+
+    .task-box p {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .stat {
+      border-radius: 8px;
+      padding: 12px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+      line-height: 1.1;
+      color: var(--primary-dark);
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .done-msg {
+      margin: 0 0 14px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #e8f5e9;
+      color: #1b5e20;
+      font-weight: 700;
+      display: none;
+    }
+
+    .done-msg.show {
+      display: block;
+    }
+
+    .review-item,
+    .quiz-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfa;
+    }
+
+    .review-origin {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .empty {
+      color: var(--muted);
+      margin: 0;
+      padding: 12px;
+      background: #fbfcfa;
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+    }
+
+    .quiz-box {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .quiz-box.show {
+      display: block;
+    }
+
+    .quiz-answer {
+      display: none;
+      padding-top: 8px;
+      margin-top: 8px;
+      border-top: 1px solid var(--line);
+    }
+
+    .quiz-answer.show {
+      display: block;
+    }
+
+    .side-section + .side-section {
+      margin-top: 16px;
+    }
+
+    .sync-area {
+      width: 100%;
+      min-height: 112px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      color: var(--text);
+      background: #fbfcfa;
+      font: 13px/1.45 ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    }
+
+    .sync-note {
+      margin: 8px 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .small-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      max-width: min(92vw, 520px);
+      padding: 11px 14px;
+      border-radius: 999px;
+      background: #18221e;
+      color: #fff;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 20;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+
+    @media (max-width: 860px) {
+      .grid,
+      .controls,
+      .actions {
+        grid-template-columns: 1fr;
+      }
+
+      .word-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 520px) {
+      .app {
+        padding: 10px 10px 34px;
+      }
+
+      .hero,
+      .card {
+        padding: 14px;
+      }
+
+      .lesson-head,
+      .phrase {
+        display: grid;
+      }
+
+      .day-tag {
+        justify-self: start;
+      }
+
+      .word-list,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .thai {
+        font-size: 23px;
+      }
+
+      .sound {
+        width: 100%;
+        border-radius: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="topbar">
+      <div class="hero">
+        <h1>老方泰语100天计划</h1>
+        <p class="slogan">每天5句，100天后敢开口。</p>
+      </div>
+
+      <div class="controls" aria-label="天数切换">
+        <button class="btn" id="prevDay">前一天</button>
+        <select class="select" id="daySelect" aria-label="选择学习天数"></select>
+        <button class="btn" id="nextDay">后一天</button>
+        <button class="btn ghost" id="copyToday">复制今日内容</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="lesson-head">
+          <div>
+            <p class="meta" id="categoryText"></p>
+            <h2 id="themeText"></h2>
+          </div>
+          <span class="day-tag" id="dayText"></span>
+        </div>
+
+        <h3>今日5句泰语</h3>
+        <div class="phrase-list" id="phraseList"></div>
+
+        <div class="task-box">
+          <h3>今日实战任务</h3>
+          <p id="taskText"></p>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" id="completeBtn">完成今日学习</button>
+          <button class="btn" id="randomQuiz">随机抽查</button>
+          <button class="btn" id="resetQuiz">清空抽查</button>
+        </div>
+      </article>
+
+      <aside>
+        <section class="card side-section">
+          <div class="stats">
+            <div class="stat">
+              <strong id="streakText">0</strong>
+              <span>连续学习天数</span>
+            </div>
+            <div class="stat">
+              <strong id="totalText">0</strong>
+              <span>总完成天数</span>
+            </div>
+          </div>
+          <p class="done-msg" id="doneMsg"></p>
+
+          <h3>今日5个单词</h3>
+          <div class="word-list" id="wordList"></div>
+        </section>
+
+        <section class="card side-section">
+          <h3>复习：昨天、3天前、7天前</h3>
+          <div class="review-list" id="reviewList"></div>
+        </section>
+
+        <section class="card side-section">
+          <h3>随机抽查</h3>
+          <p class="empty" id="quizEmpty">点击“随机抽查”，从已完成打卡的内容里抽一句。</p>
+          <div class="quiz-box" id="quizBox">
+            <p class="thai" id="quizThai"></p>
+            <div class="small-row">
+              <button class="btn ghost" id="quizSpeak">播放</button>
+              <button class="btn" id="showAnswer">显示中文</button>
+            </div>
+            <div class="quiz-answer" id="quizAnswer">
+              <p class="roman" id="quizRoman"></p>
+              <p class="chinese" id="quizChinese"></p>
+              <p class="usage" id="quizUsage"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card side-section">
+          <h3>进度同步</h3>
+          <p class="sync-note">电脑和手机各自保存进度。导出进度码后发到微信，再在另一台设备导入。</p>
+          <textarea class="sync-area" id="syncCode" placeholder="这里会显示导出的进度码，也可以粘贴另一台设备的进度码"></textarea>
+          <div class="small-row" style="margin-top: 10px;">
+            <button class="btn ghost" id="exportProgress">导出进度</button>
+            <button class="btn" id="importProgress">导入进度</button>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // Day 1-20 是真实学习内容；Day 21-100 先用完整结构占位，方便后续逐天替换。
+    const realLessons = [
+      {
+        day: 1,
+        category: "基础生存口语",
+        theme: "打招呼与自我介绍",
+        phrases: [
+          { thai: "สวัสดีครับ", chinese: "你好", roman: "sa-wat-dee khrap", usage: "见面打招呼，男性说法" },
+          { thai: "ผมชื่อเหล่าฟางครับ", chinese: "我叫老方", roman: "phom cheu lao fang khrap", usage: "第一次见面介绍自己" },
+          { thai: "ยินดีที่ได้รู้จักครับ", chinese: "很高兴认识你", roman: "yin-dee thee dai roo-jak khrap", usage: "认识新朋友或候选人时使用" },
+          { thai: "คุณชื่ออะไรครับ", chinese: "你叫什么名字？", roman: "khun cheu a-rai khrap", usage: "礼貌询问对方姓名" },
+          { thai: "ผมเป็นคนจีนครับ", chinese: "我是中国人", roman: "phom pen khon jeen khrap", usage: "说明自己的国家身份" }
+        ],
+        words: [
+          { thai: "ผม", chinese: "我，男性用", roman: "phom" },
+          { thai: "คุณ", chinese: "你，您", roman: "khun" },
+          { thai: "ชื่อ", chinese: "名字，叫做", roman: "cheu" },
+          { thai: "คนจีน", chinese: "中国人", roman: "khon jeen" },
+          { thai: "สวัสดี", chinese: "你好", roman: "sa-wat-dee" }
+        ],
+        task: "今天至少对一个泰国人说一次：สวัสดีครับ"
+      },
+      {
+        day: 2,
+        category: "基础生存口语",
+        theme: "感谢与道歉",
+        phrases: [
+          { thai: "ขอบคุณครับ", chinese: "谢谢", roman: "khop khun khrap", usage: "收到帮助、服务或回答时使用" },
+          { thai: "ขอบคุณมากครับ", chinese: "非常感谢", roman: "khop khun maak khrap", usage: "表达更强烈的感谢" },
+          { thai: "ไม่เป็นไรครับ", chinese: "没关系", roman: "mai pen rai khrap", usage: "回应道歉或小问题" },
+          { thai: "ขอโทษครับ", chinese: "对不起，不好意思", roman: "kho thot khrap", usage: "打扰别人或犯错时使用" },
+          { thai: "รบกวนหน่อยครับ", chinese: "麻烦你一下", roman: "rop kuan noi khrap", usage: "请求别人帮忙前的礼貌表达" }
+        ],
+        words: [
+          { thai: "ขอบคุณ", chinese: "谢谢", roman: "khop khun" },
+          { thai: "มาก", chinese: "很，非常", roman: "maak" },
+          { thai: "ขอโทษ", chinese: "对不起", roman: "kho thot" },
+          { thai: "รบกวน", chinese: "打扰，麻烦", roman: "rop kuan" },
+          { thai: "หน่อย", chinese: "一点，一下", roman: "noi" }
+        ],
+        task: "今天买东西或进店时，用泰语说一次：ขอบคุณครับ"
+      },
+      {
+        day: 3,
+        category: "基础生存口语",
+        theme: "是、不是、听不懂",
+        phrases: [
+          { thai: "ใช่ครับ", chinese: "是的", roman: "chai khrap", usage: "确认对方说法时使用" },
+          { thai: "ไม่ใช่ครับ", chinese: "不是", roman: "mai chai khrap", usage: "否认或纠正信息" },
+          { thai: "ผมไม่เข้าใจครับ", chinese: "我不明白", roman: "phom mai khao jai khrap", usage: "听不懂对方意思时使用" },
+          { thai: "พูดช้า ๆ ได้ไหมครับ", chinese: "可以说慢一点吗？", roman: "phoot chaa chaa dai mai khrap", usage: "让对方放慢语速" },
+          { thai: "ช่วยพูดอีกครั้งครับ", chinese: "请再说一遍", roman: "chuay phoot eek khrang khrap", usage: "需要对方重复时使用" }
+        ],
+        words: [
+          { thai: "ใช่", chinese: "是", roman: "chai" },
+          { thai: "ไม่", chinese: "不，没", roman: "mai" },
+          { thai: "เข้าใจ", chinese: "明白，理解", roman: "khao jai" },
+          { thai: "พูด", chinese: "说", roman: "phoot" },
+          { thai: "ช้า", chinese: "慢", roman: "chaa" }
+        ],
+        task: "今天遇到听不懂时，不要切回中文，先说：พูดช้า ๆ ได้ไหมครับ"
+      },
+      {
+        day: 4,
+        category: "基础生存口语",
+        theme: "数字与价格",
+        phrases: [
+          { thai: "ราคาเท่าไหร่ครับ", chinese: "多少钱？", roman: "raa-khaa thao-rai khrap", usage: "询问商品或服务价格" },
+          { thai: "แพงไปครับ", chinese: "太贵了", roman: "phaeng pai khrap", usage: "觉得价格高时使用" },
+          { thai: "ลดได้ไหมครับ", chinese: "可以便宜一点吗？", roman: "lot dai mai khrap", usage: "砍价或谈优惠" },
+          { thai: "เอาอันนี้ครับ", chinese: "我要这个", roman: "ao an nee khrap", usage: "确认购买某个东西" },
+          { thai: "ไม่เอาครับ ขอบคุณครับ", chinese: "不要了，谢谢", roman: "mai ao khrap, khop khun khrap", usage: "礼貌拒绝购买" }
+        ],
+        words: [
+          { thai: "ราคา", chinese: "价格", roman: "raa-khaa" },
+          { thai: "เท่าไหร่", chinese: "多少", roman: "thao-rai" },
+          { thai: "แพง", chinese: "贵", roman: "phaeng" },
+          { thai: "ลด", chinese: "减少，降价", roman: "lot" },
+          { thai: "อันนี้", chinese: "这个", roman: "an nee" }
+        ],
+        task: "今天在便利店或摊位问一次：ราคาเท่าไหร่ครับ"
+      },
+      {
+        day: 5,
+        category: "基础生存口语",
+        theme: "点餐喝水",
+        phrases: [
+          { thai: "ขอเมนูหน่อยครับ", chinese: "请给我菜单", roman: "kho menu noi khrap", usage: "进餐厅点餐前使用" },
+          { thai: "เอาน้ำเปล่าหนึ่งขวดครับ", chinese: "我要一瓶矿泉水", roman: "ao nam plao neung khuat khrap", usage: "买水或点饮料" },
+          { thai: "ไม่เผ็ดครับ", chinese: "不要辣", roman: "mai phet khrap", usage: "不能吃辣时提前说明" },
+          { thai: "อร่อยมากครับ", chinese: "很好吃", roman: "a-roi maak khrap", usage: "夸赞食物" },
+          { thai: "คิดเงินด้วยครับ", chinese: "请结账", roman: "khit ngoen duay khrap", usage: "餐厅结账时使用" }
+        ],
+        words: [
+          { thai: "เมนู", chinese: "菜单", roman: "menu" },
+          { thai: "น้ำเปล่า", chinese: "矿泉水，白水", roman: "nam plao" },
+          { thai: "เผ็ด", chinese: "辣", roman: "phet" },
+          { thai: "อร่อย", chinese: "好吃", roman: "a-roi" },
+          { thai: "คิดเงิน", chinese: "结账", roman: "khit ngoen" }
+        ],
+        task: "今天点餐时至少用一句泰语，比如：ไม่เผ็ดครับ"
+      },
+      {
+        day: 6,
+        category: "基础生存口语",
+        theme: "打车与方向",
+        phrases: [
+          { thai: "ไปที่นี่ครับ", chinese: "去这里", roman: "pai thee nee khrap", usage: "给司机看地址时使用" },
+          { thai: "เลี้ยวซ้ายครับ", chinese: "左转", roman: "liao saai khrap", usage: "指路时说左转" },
+          { thai: "เลี้ยวขวาครับ", chinese: "右转", roman: "liao khwaa khrap", usage: "指路时说右转" },
+          { thai: "จอดตรงนี้ครับ", chinese: "停在这里", roman: "jot trong nee khrap", usage: "到目的地让司机停车" },
+          { thai: "ใช้เวลานานไหมครับ", chinese: "要多久？", roman: "chai welaa naan mai khrap", usage: "询问路程时间" }
+        ],
+        words: [
+          { thai: "ไป", chinese: "去", roman: "pai" },
+          { thai: "ที่นี่", chinese: "这里", roman: "thee nee" },
+          { thai: "ซ้าย", chinese: "左", roman: "saai" },
+          { thai: "ขวา", chinese: "右", roman: "khwaa" },
+          { thai: "จอด", chinese: "停车", roman: "jot" }
+        ],
+        task: "今天坐车时练一句：จอดตรงนี้ครับ"
+      },
+      {
+        day: 7,
+        category: "基础生存口语",
+        theme: "时间与预约",
+        phrases: [
+          { thai: "ตอนนี้กี่โมงครับ", chinese: "现在几点？", roman: "ton nee gee mong khrap", usage: "询问当前时间" },
+          { thai: "เจอกันพรุ่งนี้ครับ", chinese: "明天见", roman: "jer gan phrung nee khrap", usage: "结束见面或聊天时使用" },
+          { thai: "วันนี้ผมไม่ว่างครับ", chinese: "我今天没空", roman: "wan nee phom mai waang khrap", usage: "说明今天没有时间" },
+          { thai: "นัดได้กี่โมงครับ", chinese: "可以约几点？", roman: "nat dai gee mong khrap", usage: "约面试、会议或见面" },
+          { thai: "ผมจะไปถึงสายหน่อยครับ", chinese: "我会晚到一点", roman: "phom ja pai theung saai noi khrap", usage: "提前说明迟到" }
+        ],
+        words: [
+          { thai: "วันนี้", chinese: "今天", roman: "wan nee" },
+          { thai: "พรุ่งนี้", chinese: "明天", roman: "phrung nee" },
+          { thai: "ว่าง", chinese: "有空", roman: "waang" },
+          { thai: "นัด", chinese: "预约，约定", roman: "nat" },
+          { thai: "สาย", chinese: "迟，晚", roman: "saai" }
+        ],
+        task: "今天和同事约时间时，用泰语问：นัดได้กี่โมงครับ"
+      },
+      {
+        day: 8,
+        category: "基础生存口语",
+        theme: "买东西与付款",
+        phrases: [
+          { thai: "มีถุงไหมครับ", chinese: "有袋子吗？", roman: "mee thung mai khrap", usage: "购物结账时询问袋子" },
+          { thai: "จ่ายเงินสดได้ไหมครับ", chinese: "可以付现金吗？", roman: "jaai ngoen sot dai mai khrap", usage: "询问现金支付" },
+          { thai: "โอนเงินได้ไหมครับ", chinese: "可以转账吗？", roman: "ohn ngoen dai mai khrap", usage: "询问泰国常见转账付款" },
+          { thai: "ขอใบเสร็จด้วยครับ", chinese: "请给我收据", roman: "kho bai set duay khrap", usage: "报销或记录开销时使用" },
+          { thai: "รวมทั้งหมดเท่าไหร่ครับ", chinese: "一共多少钱？", roman: "ruam thang mot thao-rai khrap", usage: "确认总价" }
+        ],
+        words: [
+          { thai: "ถุง", chinese: "袋子", roman: "thung" },
+          { thai: "เงินสด", chinese: "现金", roman: "ngoen sot" },
+          { thai: "โอนเงิน", chinese: "转账", roman: "ohn ngoen" },
+          { thai: "ใบเสร็จ", chinese: "收据", roman: "bai set" },
+          { thai: "ทั้งหมด", chinese: "全部，一共", roman: "thang mot" }
+        ],
+        task: "今天付款时练一句：ขอใบเสร็จด้วยครับ"
+      },
+      {
+        day: 9,
+        category: "基础生存口语",
+        theme: "问路与地点",
+        phrases: [
+          { thai: "ห้องน้ำอยู่ที่ไหนครับ", chinese: "洗手间在哪里？", roman: "hong nam yoo thee nai khrap", usage: "商场、办公室或餐厅问洗手间" },
+          { thai: "ไป BTS ยังไงครับ", chinese: "去 BTS 怎么走？", roman: "pai BTS yang ngai khrap", usage: "问去轻轨站的路" },
+          { thai: "ใกล้ไหมครับ", chinese: "近吗？", roman: "glai mai khrap", usage: "询问距离是否近" },
+          { thai: "ไกลไหมครับ", chinese: "远吗？", roman: "glai mai khrap", usage: "询问距离是否远，注意声调不同" },
+          { thai: "เดินไปได้ไหมครับ", chinese: "可以走路去吗？", roman: "dern pai dai mai khrap", usage: "询问是否适合步行" }
+        ],
+        words: [
+          { thai: "ห้องน้ำ", chinese: "洗手间", roman: "hong nam" },
+          { thai: "อยู่", chinese: "在", roman: "yoo" },
+          { thai: "ที่ไหน", chinese: "哪里", roman: "thee nai" },
+          { thai: "ใกล้", chinese: "近", roman: "glai" },
+          { thai: "เดิน", chinese: "走路", roman: "dern" }
+        ],
+        task: "今天在商场或办公室练一句：ห้องน้ำอยู่ที่ไหนครับ"
+      },
+      {
+        day: 10,
+        category: "基础生存口语",
+        theme: "紧急与求助",
+        phrases: [
+          { thai: "ช่วยด้วยครับ", chinese: "请帮帮我", roman: "chuay duay khrap", usage: "紧急需要帮助时使用" },
+          { thai: "ผมหลงทางครับ", chinese: "我迷路了", roman: "phom long thaang khrap", usage: "找不到路时说明情况" },
+          { thai: "โทรหาตำรวจได้ไหมครับ", chinese: "可以帮我打电话给警察吗？", roman: "tho haa tam-ruat dai mai khrap", usage: "遇到安全问题时使用" },
+          { thai: "ผมต้องไปโรงพยาบาลครับ", chinese: "我需要去医院", roman: "phom tong pai rong pha-yaa-baan khrap", usage: "身体不舒服或受伤时使用" },
+          { thai: "ผมลืมของไว้ครับ", chinese: "我把东西忘在这里了", roman: "phom leum khong wai khrap", usage: "遗失物品时说明" }
+        ],
+        words: [
+          { thai: "ช่วย", chinese: "帮忙", roman: "chuay" },
+          { thai: "หลงทาง", chinese: "迷路", roman: "long thaang" },
+          { thai: "ตำรวจ", chinese: "警察", roman: "tam-ruat" },
+          { thai: "โรงพยาบาล", chinese: "医院", roman: "rong pha-yaa-baan" },
+          { thai: "ลืม", chinese: "忘记", roman: "leum" }
+        ],
+        task: "今天把 Day 1-10 最常用的10句读一遍，重点记住：ช่วยด้วยครับ"
+      },
+      {
+        day: 11,
+        category: "曼谷日常生活",
+        theme: "公寓与物业",
+        phrases: [
+          { thai: "ผมอยู่คอนโดนี้ครับ", chinese: "我住在这个公寓", roman: "phom yoo condo nee khrap", usage: "向保安或前台说明住户身份" },
+          { thai: "คีย์การ์ดใช้ไม่ได้ครับ", chinese: "门禁卡不能用了", roman: "key card chai mai dai khrap", usage: "门禁卡失效时找物业" },
+          { thai: "ช่วยเปิดประตูให้หน่อยครับ", chinese: "请帮我开一下门", roman: "chuay perd pra-too hai noi khrap", usage: "需要保安开门时使用" },
+          { thai: "มีพัสดุของผมไหมครับ", chinese: "有我的快递吗？", roman: "mee phat-sa-du khong phom mai khrap", usage: "在前台询问包裹" },
+          { thai: "ช่างจะมากี่โมงครับ", chinese: "维修师傅几点来？", roman: "chang ja maa gee mong khrap", usage: "跟物业确认维修时间" }
+        ],
+        words: [
+          { thai: "คอนโด", chinese: "公寓", roman: "condo" },
+          { thai: "คีย์การ์ด", chinese: "门禁卡", roman: "key card" },
+          { thai: "ประตู", chinese: "门", roman: "pra-too" },
+          { thai: "พัสดุ", chinese: "快递，包裹", roman: "phat-sa-du" },
+          { thai: "ช่าง", chinese: "维修师傅", roman: "chang" }
+        ],
+        task: "今天经过公寓前台时练一句：มีพัสดุของผมไหมครับ"
+      },
+      {
+        day: 12,
+        category: "曼谷日常生活",
+        theme: "便利店与生活用品",
+        phrases: [
+          { thai: "มีอันนี้ไหมครับ", chinese: "有这个吗？", roman: "mee an nee mai khrap", usage: "拿图片或商品询问店员" },
+          { thai: "อยู่ตรงไหนครับ", chinese: "在哪里？", roman: "yoo trong nai khrap", usage: "问货架位置" },
+          { thai: "ขอหลอดด้วยครับ", chinese: "请给我吸管", roman: "kho lot duay khrap", usage: "买饮料时使用" },
+          { thai: "อุ่นให้หน่อยครับ", chinese: "请帮我加热一下", roman: "oon hai noi khrap", usage: "便利店买饭盒时使用" },
+          { thai: "ไม่เอาถุงครับ", chinese: "不要袋子", roman: "mai ao thung khrap", usage: "环保或不需要袋子时使用" }
+        ],
+        words: [
+          { thai: "ร้านสะดวกซื้อ", chinese: "便利店", roman: "raan sa-duak sue" },
+          { thai: "หลอด", chinese: "吸管", roman: "lot" },
+          { thai: "อุ่น", chinese: "加热", roman: "oon" },
+          { thai: "ถุง", chinese: "袋子", roman: "thung" },
+          { thai: "ชั้นวาง", chinese: "货架", roman: "chan waang" }
+        ],
+        task: "今天在 7-11 练一句：อุ่นให้หน่อยครับ"
+      },
+      {
+        day: 13,
+        category: "曼谷日常生活",
+        theme: "外卖与骑手沟通",
+        phrases: [
+          { thai: "ผมอยู่หน้าตึกครับ", chinese: "我在楼前", roman: "phom yoo naa teuk khrap", usage: "告诉骑手自己的位置" },
+          { thai: "วางไว้ที่ล็อบบี้ได้ครับ", chinese: "可以放在大厅", roman: "waang wai thee lobby dai khrap", usage: "让骑手放到公寓大厅" },
+          { thai: "โทรหาผมได้ครับ", chinese: "可以打电话给我", roman: "tho haa phom dai khrap", usage: "让对方电话联系" },
+          { thai: "ผมจะลงไปรับครับ", chinese: "我下去拿", roman: "phom ja long pai rap khrap", usage: "准备下楼取外卖" },
+          { thai: "ขอโทษครับ ผมมาช้า", chinese: "不好意思，我来晚了", roman: "kho thot khrap, phom maa chaa", usage: "让骑手等久了时使用" }
+        ],
+        words: [
+          { thai: "หน้าตึก", chinese: "楼前", roman: "naa teuk" },
+          { thai: "ล็อบบี้", chinese: "大厅", roman: "lobby" },
+          { thai: "โทรหา", chinese: "打电话给", roman: "tho haa" },
+          { thai: "ลงไป", chinese: "下去", roman: "long pai" },
+          { thai: "รับ", chinese: "接，取", roman: "rap" }
+        ],
+        task: "今天叫外卖时，提前准备一句：ผมจะลงไปรับครับ"
+      },
+      {
+        day: 14,
+        category: "曼谷日常生活",
+        theme: "咖啡店办公",
+        phrases: [
+          { thai: "มีปลั๊กไหมครับ", chinese: "有插座吗？", roman: "mee plug mai khrap", usage: "找适合办公的位置" },
+          { thai: "ขอไวไฟหน่อยครับ", chinese: "请给我 Wi-Fi", roman: "kho wai-fai noi khrap", usage: "询问 Wi-Fi 密码" },
+          { thai: "นั่งตรงนี้ได้ไหมครับ", chinese: "可以坐这里吗？", roman: "nang trong nee dai mai khrap", usage: "确认座位是否可用" },
+          { thai: "เอากาแฟเย็นหนึ่งแก้วครับ", chinese: "我要一杯冰咖啡", roman: "ao gaa-fae yen neung gaew khrap", usage: "点冰咖啡" },
+          { thai: "หวานน้อยครับ", chinese: "少糖", roman: "waan noi khrap", usage: "点饮料控制甜度" }
+        ],
+        words: [
+          { thai: "ปลั๊ก", chinese: "插座", roman: "plug" },
+          { thai: "ไวไฟ", chinese: "Wi-Fi", roman: "wai-fai" },
+          { thai: "นั่ง", chinese: "坐", roman: "nang" },
+          { thai: "กาแฟเย็น", chinese: "冰咖啡", roman: "gaa-fae yen" },
+          { thai: "หวานน้อย", chinese: "少糖", roman: "waan noi" }
+        ],
+        task: "今天买咖啡时用泰语说甜度：หวานน้อยครับ"
+      },
+      {
+        day: 15,
+        category: "曼谷日常生活",
+        theme: "理发与个人服务",
+        phrases: [
+          { thai: "ตัดสั้นนิดหน่อยครับ", chinese: "剪短一点点", roman: "tat san nit noi khrap", usage: "理发时说明长度" },
+          { thai: "เอาทรงเดิมครับ", chinese: "按原来的发型", roman: "ao song derm khrap", usage: "想保持发型时使用" },
+          { thai: "อย่าสั้นเกินไปครับ", chinese: "不要剪太短", roman: "yaa san gern pai khrap", usage: "提醒理发师控制长度" },
+          { thai: "โกนหนวดด้วยครับ", chinese: "请刮胡子", roman: "gohn nuat duay khrap", usage: "需要刮胡服务" },
+          { thai: "ดีแล้วครับ ขอบคุณครับ", chinese: "可以了，谢谢", roman: "dee laew khrap, khop khun khrap", usage: "确认服务完成" }
+        ],
+        words: [
+          { thai: "ตัดผม", chinese: "理发", roman: "tat phom" },
+          { thai: "สั้น", chinese: "短", roman: "san" },
+          { thai: "ทรงผม", chinese: "发型", roman: "song phom" },
+          { thai: "หนวด", chinese: "胡子", roman: "nuat" },
+          { thai: "เกินไป", chinese: "太过", roman: "gern pai" }
+        ],
+        task: "今天把理发高频句读三遍：อย่าสั้นเกินไปครับ"
+      },
+      {
+        day: 16,
+        category: "曼谷日常生活",
+        theme: "医院和药店",
+        phrases: [
+          { thai: "ผมปวดหัวครับ", chinese: "我头疼", roman: "phom puat hua khrap", usage: "描述身体不舒服" },
+          { thai: "ผมเจ็บคอครับ", chinese: "我喉咙痛", roman: "phom jep kho khrap", usage: "感冒或嗓子不舒服时使用" },
+          { thai: "มียาแก้ปวดไหมครับ", chinese: "有止痛药吗？", roman: "mee yaa gae puat mai khrap", usage: "药店买药" },
+          { thai: "กินยาวันละกี่ครั้งครับ", chinese: "药一天吃几次？", roman: "gin yaa wan la gee khrang khrap", usage: "询问用药频率" },
+          { thai: "ผมแพ้ยานี้ครับ", chinese: "我对这个药过敏", roman: "phom phae yaa nee khrap", usage: "向医生或药剂师说明过敏" }
+        ],
+        words: [
+          { thai: "ปวดหัว", chinese: "头疼", roman: "puat hua" },
+          { thai: "เจ็บคอ", chinese: "喉咙痛", roman: "jep kho" },
+          { thai: "ยา", chinese: "药", roman: "yaa" },
+          { thai: "แพ้ยา", chinese: "药物过敏", roman: "phae yaa" },
+          { thai: "วันละ", chinese: "每天，每日", roman: "wan la" }
+        ],
+        task: "今天记住身体不舒服时第一句：ผมปวดหัวครับ"
+      },
+      {
+        day: 17,
+        category: "曼谷日常生活",
+        theme: "健身房与健康",
+        phrases: [
+          { thai: "สมัครสมาชิกได้ไหมครับ", chinese: "可以办会员吗？", roman: "sa-mak sa-maa-chik dai mai khrap", usage: "咨询健身房会员" },
+          { thai: "เดือนละเท่าไหร่ครับ", chinese: "一个月多少钱？", roman: "duean la thao-rai khrap", usage: "询问月费" },
+          { thai: "มีเทรนเนอร์ไหมครับ", chinese: "有教练吗？", roman: "mee trainer mai khrap", usage: "询问私教" },
+          { thai: "ผมอยากลดน้ำหนักครับ", chinese: "我想减肥", roman: "phom yaak lot nam nak khrap", usage: "说明健身目标" },
+          { thai: "วันนี้ผมเหนื่อยมากครับ", chinese: "今天我很累", roman: "wan nee phom nueai maak khrap", usage: "表达体力状态" }
+        ],
+        words: [
+          { thai: "สมาชิก", chinese: "会员", roman: "sa-maa-chik" },
+          { thai: "เดือนละ", chinese: "每月", roman: "duean la" },
+          { thai: "เทรนเนอร์", chinese: "教练", roman: "trainer" },
+          { thai: "ลดน้ำหนัก", chinese: "减肥", roman: "lot nam nak" },
+          { thai: "เหนื่อย", chinese: "累", roman: "nueai" }
+        ],
+        task: "今天用泰语说出自己的状态：วันนี้ผมเหนื่อยมากครับ"
+      },
+      {
+        day: 18,
+        category: "曼谷日常生活",
+        theme: "朋友聊天",
+        phrases: [
+          { thai: "วันนี้เป็นยังไงบ้างครับ", chinese: "今天怎么样？", roman: "wan nee pen yang ngai baang khrap", usage: "和朋友或同事寒暄" },
+          { thai: "ไปกินข้าวกันไหมครับ", chinese: "一起去吃饭吗？", roman: "pai gin khao gan mai khrap", usage: "邀请别人吃饭" },
+          { thai: "ผมชอบอาหารไทยครับ", chinese: "我喜欢泰国菜", roman: "phom chorp aa-haan thai khrap", usage: "聊天说喜好" },
+          { thai: "อากาศร้อนมากครับ", chinese: "天气很热", roman: "aa-gaat ron maak khrap", usage: "曼谷日常聊天高频句" },
+          { thai: "ไว้เจอกันใหม่นะครับ", chinese: "下次见", roman: "wai jer gan mai na khrap", usage: "轻松告别" }
+        ],
+        words: [
+          { thai: "เป็นยังไงบ้าง", chinese: "怎么样", roman: "pen yang ngai baang" },
+          { thai: "กินข้าว", chinese: "吃饭", roman: "gin khao" },
+          { thai: "ชอบ", chinese: "喜欢", roman: "chorp" },
+          { thai: "อากาศ", chinese: "天气", roman: "aa-gaat" },
+          { thai: "ร้อน", chinese: "热", roman: "ron" }
+        ],
+        task: "今天跟同事用泰语问候：วันนี้เป็นยังไงบ้างครับ"
+      },
+      {
+        day: 19,
+        category: "曼谷日常生活",
+        theme: "收发快递",
+        phrases: [
+          { thai: "ผมมารับพัสดุครับ", chinese: "我来取快递", roman: "phom maa rap phat-sa-du khrap", usage: "去前台或快递点取件" },
+          { thai: "ต้องเซ็นชื่อไหมครับ", chinese: "需要签名吗？", roman: "tong sen cheu mai khrap", usage: "签收快递时询问" },
+          { thai: "ส่งของไปจีนได้ไหมครับ", chinese: "可以寄东西到中国吗？", roman: "song khong pai jeen dai mai khrap", usage: "咨询国际寄件" },
+          { thai: "ค่าส่งเท่าไหร่ครับ", chinese: "运费多少钱？", roman: "khaa song thao-rai khrap", usage: "询问快递费用" },
+          { thai: "ของแตกง่ายครับ", chinese: "这个东西易碎", roman: "khong taek ngai khrap", usage: "寄易碎品时提醒" }
+        ],
+        words: [
+          { thai: "รับพัสดุ", chinese: "取快递", roman: "rap phat-sa-du" },
+          { thai: "เซ็นชื่อ", chinese: "签名", roman: "sen cheu" },
+          { thai: "ส่งของ", chinese: "寄东西", roman: "song khong" },
+          { thai: "ค่าส่ง", chinese: "运费", roman: "khaa song" },
+          { thai: "แตกง่าย", chinese: "易碎", roman: "taek ngai" }
+        ],
+        task: "今天取件时练一句：ผมมารับพัสดุครับ"
+      },
+      {
+        day: 20,
+        category: "曼谷日常生活",
+        theme: "周末安排",
+        phrases: [
+          { thai: "สุดสัปดาห์นี้คุณไปไหนครับ", chinese: "这个周末你去哪儿？", roman: "sut sap-daa nee khun pai nai khrap", usage: "周末聊天开场" },
+          { thai: "ผมอยากไปเดินห้างครับ", chinese: "我想去逛商场", roman: "phom yaak pai dern haang khrap", usage: "表达周末计划" },
+          { thai: "ไปด้วยกันไหมครับ", chinese: "一起去吗？", roman: "pai duay gan mai khrap", usage: "邀请对方同行" },
+          { thai: "ผมต้องทำงานครับ", chinese: "我得工作", roman: "phom tong tham ngaan khrap", usage: "说明周末需要工作" },
+          { thai: "พักผ่อนให้เต็มที่นะครับ", chinese: "好好休息", roman: "phak phon hai tem thee na khrap", usage: "关心朋友或同事" }
+        ],
+        words: [
+          { thai: "สุดสัปดาห์", chinese: "周末", roman: "sut sap-daa" },
+          { thai: "เดินห้าง", chinese: "逛商场", roman: "dern haang" },
+          { thai: "ด้วยกัน", chinese: "一起", roman: "duay gan" },
+          { thai: "ทำงาน", chinese: "工作", roman: "tham ngaan" },
+          { thai: "พักผ่อน", chinese: "休息", roman: "phak phon" }
+        ],
+        task: "今天用泰语说一句周末计划：ผมต้องทำงานครับ"
+      }
+    ];
+
+    function categoryForDay(day) {
+      if (day <= 10) return "基础生存口语";
+      if (day <= 25) return "曼谷日常生活";
+      if (day <= 45) return "招聘泰国主播";
+      if (day <= 65) return "TikTok直播间管理";
+      if (day <= 80) return "办公室管理与团队沟通";
+      if (day <= 90) return "签证、银行、政府办事";
+      return "自由表达和复盘";
+    }
+
+    const placeholderThemes = {
+      "曼谷日常生活": ["房租水电", "维修沟通", "交通换乘", "朋友邀约", "日常复盘"],
+      "招聘泰国主播": ["发布招聘", "约面试时间", "询问经验", "试播沟通", "薪资与排班"],
+      "TikTok直播间管理": ["开播准备", "商品讲解", "催单转化", "评论互动", "下播复盘"],
+      "办公室管理与团队沟通": ["安排任务", "确认进度", "反馈问题", "会议同步", "团队激励"],
+      "签证、银行、政府办事": ["准备材料", "银行开户", "签证续签", "排队窗口", "确认结果"],
+      "自由表达和复盘": ["表达想法", "总结今天", "说明原因", "提出建议", "100天复盘"]
+    };
+
+    function makePlaceholderLesson(day) {
+      const category = categoryForDay(day);
+      const themes = placeholderThemes[category];
+      const theme = themes[(day - 1) % themes.length];
+      return {
+        day,
+        category,
+        theme: `${theme}（待补充）`,
+        phrases: Array.from({ length: 5 }, (_, index) => ({
+          thai: `ประโยคตัวอย่างวันที่ ${day} ข้อ ${index + 1}`,
+          chinese: `Day ${day} 第 ${index + 1} 句占位内容，后续替换为真实业务泰语`,
+          roman: `pra-yok tua-yang wan thee ${day} kho ${index + 1}`,
+          usage: `${category} - ${theme} 场景占位`
+        })),
+        words: Array.from({ length: 5 }, (_, index) => ({
+          thai: `คำศัพท์ ${day}-${index + 1}`,
+          chinese: `Day ${day} 第 ${index + 1} 个占位单词`,
+          roman: `kham-sap ${day}-${index + 1}`
+        })),
+        task: `完成 Day ${day}「${category} - ${theme}」的实战任务占位，后续替换为真实练习。`
+      };
+    }
+
+    const lessons = [
+      ...realLessons,
+      ...Array.from({ length: 80 }, (_, index) => makePlaceholderLesson(index + 21))
+    ];
+
+    const STORAGE_KEY = "laofangThai100State";
+    const encouragements = [
+      "今天又多会了5句泰语。",
+      "出海别堆人，先练AI兵，也要练泰语兵。",
+      "你在曼谷多开一次口，就少一次靠翻译。",
+      "直播间要转化，老板也要敢说泰语。"
+    ];
+
+    let currentDay = Number(localStorage.getItem("laofangThai100CurrentDay")) || 1;
+    let currentQuizPhrase = null;
+
+    function loadState() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { completedDays: [], completionDates: {} };
+      try {
+        const parsed = JSON.parse(raw);
+        return {
+          completedDays: Array.isArray(parsed.completedDays) ? parsed.completedDays : [],
+          completionDates: parsed.completionDates || {}
+        };
+      } catch (error) {
+        return { completedDays: [], completionDates: {} };
+      }
+    }
+
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function normalizeState(state) {
+      const completedDays = [...new Set((state.completedDays || [])
+        .map(Number)
+        .filter((day) => Number.isInteger(day) && day >= 1 && day <= 100))]
+        .sort((a, b) => a - b);
+      const completionDates = {};
+      Object.keys(state.completionDates || {}).forEach((key) => {
+        if (/^\d{4}-\d{2}-\d{2}$/.test(key)) completionDates[key] = true;
+      });
+      return { completedDays, completionDates };
+    }
+
+    function todayKey() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function dateKeyFromOffset(offset) {
+      const date = new Date();
+      date.setDate(date.getDate() - offset);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function calculateStreak(completionDates) {
+      let streak = 0;
+      while (completionDates[dateKeyFromOffset(streak)]) {
+        streak += 1;
+      }
+      return streak;
+    }
+
+    function getLesson(day) {
+      return lessons.find((lesson) => lesson.day === day) || lessons[0];
+    }
+
+    function speakThai(text) {
+      if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+        alert("你的浏览器不支持 Web Speech API 发音功能，请换 Chrome 或 Edge 试试。");
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "th-TH";
+      utterance.rate = 0.82;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    function renderDaySelect() {
+      const select = document.getElementById("daySelect");
+      select.innerHTML = lessons.map((lesson) => `<option value="${lesson.day}">Day ${lesson.day}</option>`).join("");
+      select.value = String(currentDay);
+    }
+
+    function renderLesson() {
+      const lesson = getLesson(currentDay);
+      const state = loadState();
+      const completed = state.completedDays.includes(currentDay);
+
+      localStorage.setItem("laofangThai100CurrentDay", String(currentDay));
+      document.getElementById("daySelect").value = String(currentDay);
+      document.getElementById("prevDay").disabled = currentDay === 1;
+      document.getElementById("nextDay").disabled = currentDay === 100;
+      document.getElementById("dayText").textContent = `当前学习天数：Day ${lesson.day}`;
+      document.getElementById("categoryText").textContent = lesson.category;
+      document.getElementById("themeText").textContent = `今日主题：${lesson.theme}`;
+      document.getElementById("taskText").textContent = lesson.task;
+
+      document.getElementById("phraseList").innerHTML = lesson.phrases.map((phrase, index) => `
+        <div class="phrase">
+          <div>
+            <p class="thai">${phrase.thai}</p>
+            <p class="roman">${phrase.roman}</p>
+            <p class="chinese">${index + 1}. ${phrase.chinese}</p>
+            <p class="usage">使用场景：${phrase.usage}</p>
+          </div>
+          <button class="sound" data-speak="${escapeHtml(phrase.thai)}" aria-label="播放泰语发音">▶</button>
+        </div>
+      `).join("");
+
+      document.getElementById("wordList").innerHTML = lesson.words.map((word) => `
+        <div class="word">
+          <p class="thai">${word.thai}</p>
+          <p class="roman">${word.roman}</p>
+          <p class="chinese">${word.chinese}</p>
+        </div>
+      `).join("");
+
+      document.getElementById("completeBtn").textContent = completed ? "今日已完成" : "完成今日学习";
+      document.getElementById("doneMsg").classList.toggle("show", completed);
+      document.getElementById("doneMsg").textContent = completed ? encouragements[(currentDay - 1) % encouragements.length] : "";
+
+      renderStats();
+      renderReview();
+    }
+
+    function renderStats() {
+      const state = loadState();
+      document.getElementById("streakText").textContent = calculateStreak(state.completionDates);
+      document.getElementById("totalText").textContent = state.completedDays.length;
+    }
+
+    function renderReview() {
+      const offsets = [
+        { label: "昨天", value: 1 },
+        { label: "3天前", value: 3 },
+        { label: "7天前", value: 7 }
+      ];
+      const reviewItems = offsets
+        .map((offset) => {
+          const reviewDay = currentDay - offset.value;
+          if (reviewDay < 1) return "";
+          const lesson = getLesson(reviewDay);
+          return `
+            <div class="review-item">
+              <p class="review-origin">${offset.label} · Day ${reviewDay} · ${lesson.theme}</p>
+              ${lesson.phrases.map((phrase) => `
+                <p class="thai">${phrase.thai}</p>
+                <p class="chinese">${phrase.chinese}</p>
+              `).join("")}
+            </div>
+          `;
+        })
+        .filter(Boolean);
+
+      document.getElementById("reviewList").innerHTML = reviewItems.length
+        ? reviewItems.join("")
+        : `<p class="empty">暂无复习内容</p>`;
+    }
+
+    function completeToday() {
+      const state = loadState();
+      if (!state.completedDays.includes(currentDay)) {
+        state.completedDays.push(currentDay);
+        state.completedDays.sort((a, b) => a - b);
+      }
+      state.completionDates[todayKey()] = true;
+      saveState(state);
+      renderLesson();
+      showToast(encouragements[(currentDay - 1) % encouragements.length]);
+    }
+
+    function copyTodayContent() {
+      const lesson = getLesson(currentDay);
+      const text = [
+        `老方泰语100天计划 Day ${lesson.day}`,
+        `分类：${lesson.category}`,
+        `主题：${lesson.theme}`,
+        "",
+        "今日5句泰语：",
+        ...lesson.phrases.map((phrase, index) => `${index + 1}. ${phrase.thai}\n中文：${phrase.chinese}\n发音：${phrase.roman}\n场景：${phrase.usage}`),
+        "",
+        "今日5个单词：",
+        ...lesson.words.map((word, index) => `${index + 1}. ${word.thai}｜${word.chinese}｜${word.roman}`),
+        "",
+        `实战任务：${lesson.task}`
+      ].join("\n");
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast("今日内容已复制"));
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+        showToast("今日内容已复制");
+      }
+    }
+
+    function encodeProgress(payload) {
+      const json = JSON.stringify(payload);
+      const bytes = new TextEncoder().encode(json);
+      let binary = "";
+      bytes.forEach((byte) => {
+        binary += String.fromCharCode(byte);
+      });
+      return btoa(binary);
+    }
+
+    function decodeProgress(code) {
+      const cleanCode = code.trim();
+      const binary = atob(cleanCode);
+      const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+      const json = new TextDecoder().decode(bytes);
+      return JSON.parse(json);
+    }
+
+    function exportProgress() {
+      const payload = {
+        app: "laofang-thai-100",
+        version: 1,
+        exportedAt: new Date().toISOString(),
+        currentDay,
+        state: normalizeState(loadState())
+      };
+      const code = encodeProgress(payload);
+      const textarea = document.getElementById("syncCode");
+      textarea.value = code;
+      textarea.select();
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(() => showToast("进度码已复制，可以发到微信"));
+      } else {
+        document.execCommand("copy");
+        showToast("进度码已生成，可以手动复制");
+      }
+    }
+
+    function importProgress() {
+      const textarea = document.getElementById("syncCode");
+      if (!textarea.value.trim()) {
+        showToast("请先粘贴进度码");
+        return;
+      }
+
+      try {
+        const payload = decodeProgress(textarea.value);
+        if (!payload || payload.app !== "laofang-thai-100" || !payload.state) {
+          throw new Error("Invalid progress code");
+        }
+
+        const importedState = normalizeState(payload.state);
+        saveState(importedState);
+        if (Number.isInteger(payload.currentDay) && payload.currentDay >= 1 && payload.currentDay <= 100) {
+          currentDay = payload.currentDay;
+        }
+        renderLesson();
+        showToast("进度已导入");
+      } catch (error) {
+        showToast("进度码无效，请重新复制完整内容");
+      }
+    }
+
+    function randomQuiz() {
+      const state = loadState();
+      const learnedDays = state.completedDays.length ? state.completedDays : [];
+      const pool = learnedDays.flatMap((day) => getLesson(day).phrases);
+
+      if (!pool.length) {
+        showToast("先完成至少一天打卡，再随机抽查。");
+        return;
+      }
+
+      currentQuizPhrase = pool[Math.floor(Math.random() * pool.length)];
+      document.getElementById("quizEmpty").style.display = "none";
+      document.getElementById("quizBox").classList.add("show");
+      document.getElementById("quizThai").textContent = currentQuizPhrase.thai;
+      document.getElementById("quizRoman").textContent = currentQuizPhrase.roman;
+      document.getElementById("quizChinese").textContent = currentQuizPhrase.chinese;
+      document.getElementById("quizUsage").textContent = `使用场景：${currentQuizPhrase.usage}`;
+      document.getElementById("quizAnswer").classList.remove("show");
+    }
+
+    function resetQuiz() {
+      currentQuizPhrase = null;
+      document.getElementById("quizEmpty").style.display = "block";
+      document.getElementById("quizBox").classList.remove("show");
+      document.getElementById("quizAnswer").classList.remove("show");
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    document.addEventListener("click", (event) => {
+      const speakButton = event.target.closest("[data-speak]");
+      if (speakButton) speakThai(speakButton.dataset.speak);
+    });
+
+    document.getElementById("prevDay").addEventListener("click", () => {
+      currentDay = Math.max(1, currentDay - 1);
+      renderLesson();
+    });
+
+    document.getElementById("nextDay").addEventListener("click", () => {
+      currentDay = Math.min(100, currentDay + 1);
+      renderLesson();
+    });
+
+    document.getElementById("daySelect").addEventListener("change", (event) => {
+      currentDay = Number(event.target.value);
+      renderLesson();
+    });
+
+    document.getElementById("completeBtn").addEventListener("click", completeToday);
+    document.getElementById("copyToday").addEventListener("click", copyTodayContent);
+    document.getElementById("randomQuiz").addEventListener("click", randomQuiz);
+    document.getElementById("resetQuiz").addEventListener("click", resetQuiz);
+    document.getElementById("exportProgress").addEventListener("click", exportProgress);
+    document.getElementById("importProgress").addEventListener("click", importProgress);
+    document.getElementById("showAnswer").addEventListener("click", () => {
+      document.getElementById("quizAnswer").classList.add("show");
+    });
+    document.getElementById("quizSpeak").addEventListener("click", () => {
+      if (currentQuizPhrase) speakThai(currentQuizPhrase.thai);
+    });
+
+    renderDaySelect();
+    renderLesson();
+  </script>
+</body>
+</html>
