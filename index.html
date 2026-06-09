@@ -195,6 +195,7 @@
       font-weight: 800;
       letter-spacing: 0;
       font-family: "Leelawadee UI", "Noto Sans Thai", "Tahoma", sans-serif;
+      white-space: pre-line;
     }
 
     .roman {
@@ -993,6 +994,144 @@
       }
     ];
 
+    const dialogueLessonOverrides = {
+      8: {
+        theme: "便利店付款对话",
+        phrases: [
+          { thai: "A: มีถุงไหม\nB: มี เอาไหม", speak: "มีถุงไหม มี เอาไหม", chinese: "A：有袋子吗？B：有，要吗？", english: "A: Do you have a bag? B: Yes, do you want one?", roman: "mee thung mai / mee ao mai", usage: "便利店结账时的自然对话" },
+          { thai: "A: จ่ายเงินสดได้ไหม\nB: ได้", speak: "จ่ายเงินสดได้ไหม ได้", chinese: "A：可以付现金吗？B：可以。", english: "A: Can I pay cash? B: Yes.", roman: "jaai ngoen sot dai mai / dai", usage: "确认付款方式" },
+          { thai: "A: โอนเงินได้ไหม\nB: ได้ สแกนตรงนี้", speak: "โอนเงินได้ไหม ได้ สแกนตรงนี้", chinese: "A：可以转账吗？B：可以，扫这里。", english: "A: Can I transfer? B: Yes, scan here.", roman: "ohn ngoen dai mai / dai scan trong nee", usage: "泰国扫码付款" },
+          { thai: "A: ขอใบเสร็จได้ไหม\nB: ได้ รอสักครู่", speak: "ขอใบเสร็จได้ไหม ได้ รอสักครู่", chinese: "A：可以给我收据吗？B：可以，等一下。", english: "A: Can I have a receipt? B: Yes, wait a moment.", roman: "kho bai set dai mai / dai ro sak khroo", usage: "报销或记录支出" },
+          { thai: "A: รวมทั้งหมดเท่าไหร่\nB: หนึ่งร้อยบาท", speak: "รวมทั้งหมดเท่าไหร่ หนึ่งร้อยบาท", chinese: "A：一共多少钱？B：一百泰铢。", english: "A: How much in total? B: One hundred baht.", roman: "ruam thang mot thao-rai / neung roi baat", usage: "确认总价" }
+        ]
+      },
+      9: {
+        theme: "问路小对话",
+        phrases: [
+          { thai: "A: ห้องน้ำอยู่ที่ไหน\nB: อยู่ข้างหน้า", speak: "ห้องน้ำอยู่ที่ไหน อยู่ข้างหน้า", chinese: "A：洗手间在哪里？B：在前面。", english: "A: Where is the restroom? B: It is in front.", roman: "hong nam yoo thee nai / yoo khaang naa", usage: "商场或办公室问路" },
+          { thai: "A: ไป BTS ยังไง\nB: เดินตรงไป", speak: "ไป BTS ยังไง เดินตรงไป", chinese: "A：去 BTS 怎么走？B：直走。", english: "A: How do I get to the BTS? B: Walk straight.", roman: "pai BTS yang ngai / dern trong pai", usage: "问轻轨站方向" },
+          { thai: "A: ใกล้ไหม\nB: ใกล้มาก", speak: "ใกล้ไหม ใกล้มาก", chinese: "A：近吗？B：很近。", english: "A: Is it near? B: Very near.", roman: "glai mai / glai maak", usage: "确认距离" },
+          { thai: "A: ไกลไหม\nB: ไม่ไกล", speak: "ไกลไหม ไม่ไกล", chinese: "A：远吗？B：不远。", english: "A: Is it far? B: Not far.", roman: "glai mai / mai glai", usage: "确认是否需要打车" },
+          { thai: "A: เดินไปได้ไหม\nB: ได้ ประมาณห้านาที", speak: "เดินไปได้ไหม ได้ ประมาณห้านาที", chinese: "A：可以走路去吗？B：可以，大概五分钟。", english: "A: Can I walk there? B: Yes, about five minutes.", roman: "dern pai dai mai / dai pra-maan haa naa-thee", usage: "判断步行路线" }
+        ]
+      },
+      10: {
+        theme: "紧急求助小对话",
+        phrases: [
+          { thai: "A: ช่วยด้วย\nB: เกิดอะไรขึ้น", speak: "ช่วยด้วย เกิดอะไรขึ้น", chinese: "A：帮帮我。B：发生什么事？", english: "A: Help me. B: What happened?", roman: "chuay duay / gerd a-rai kheun", usage: "紧急求助开口" },
+          { thai: "A: ผมหลงทาง\nB: จะไปที่ไหน", speak: "ผมหลงทาง จะไปที่ไหน", chinese: "A：我迷路了。B：你要去哪里？", english: "A: I am lost. B: Where are you going?", roman: "phom long thaang / ja pai thee nai", usage: "迷路求助" },
+          { thai: "A: โทรหาตำรวจได้ไหม\nB: ได้", speak: "โทรหาตำรวจได้ไหม ได้", chinese: "A：可以帮我打给警察吗？B：可以。", english: "A: Can you call the police? B: Yes.", roman: "tho haa tam-ruat dai mai / dai", usage: "安全问题" },
+          { thai: "A: ผมต้องไปโรงพยาบาล\nB: เรียกรถให้ไหม", speak: "ผมต้องไปโรงพยาบาล เรียกรถให้ไหม", chinese: "A：我需要去医院。B：要我帮你叫车吗？", english: "A: I need to go to the hospital. B: Should I call a car for you?", roman: "phom tong pai rong pha-yaa-baan / riak rot hai mai", usage: "身体不舒服" },
+          { thai: "A: ผมลืมของไว้\nB: ของอะไร", speak: "ผมลืมของไว้ ของอะไร", chinese: "A：我东西忘在这里了。B：什么东西？", english: "A: I left something here. B: What item?", roman: "phom leum khong wai / khong a-rai", usage: "找遗失物" }
+        ]
+      },
+      11: {
+        theme: "公寓前台小对话",
+        phrases: [
+          { thai: "A: ผมอยู่คอนโดนี้\nB: ห้องอะไร", speak: "ผมอยู่คอนโดนี้ ห้องอะไร", chinese: "A：我住这个公寓。B：几号房？", english: "A: I live in this condo. B: Which room?", roman: "phom yoo condo nee / hong a-rai", usage: "向前台说明住户身份" },
+          { thai: "A: คีย์การ์ดใช้ไม่ได้\nB: ขอเช็กก่อน", speak: "คีย์การ์ดใช้ไม่ได้ ขอเช็กก่อน", chinese: "A：门禁卡不能用了。B：我先查一下。", english: "A: The key card does not work. B: Let me check first.", roman: "key card chai mai dai / kho check gon", usage: "门禁卡失效" },
+          { thai: "A: เปิดประตูให้หน่อย\nB: ได้", speak: "เปิดประตูให้หน่อย ได้", chinese: "A：帮我开下门。B：可以。", english: "A: Please open the door for me. B: Okay.", roman: "perd pra-too hai noi / dai", usage: "请保安开门" },
+          { thai: "A: มีพัสดุของผมไหม\nB: มี หนึ่งกล่อง", speak: "มีพัสดุของผมไหม มี หนึ่งกล่อง", chinese: "A：有我的快递吗？B：有，一个箱子。", english: "A: Do I have a parcel? B: Yes, one box.", roman: "mee phat-sa-du khong phom mai / mee neung glong", usage: "前台取快递" },
+          { thai: "A: ช่างจะมากี่โมง\nB: บ่ายสอง", speak: "ช่างจะมากี่โมง บ่ายสอง", chinese: "A：维修师傅几点来？B：下午两点。", english: "A: What time will the technician come? B: Two in the afternoon.", roman: "chang ja maa gee mong / baai song", usage: "确认维修时间" }
+        ]
+      },
+      12: {
+        theme: "便利店找东西",
+        phrases: [
+          { thai: "A: มีอันนี้ไหม\nB: มี อยู่ด้านหลัง", speak: "มีอันนี้ไหม มี อยู่ด้านหลัง", chinese: "A：有这个吗？B：有，在后面。", english: "A: Do you have this? B: Yes, in the back.", roman: "mee an nee mai / mee yoo daan lang", usage: "拿图片问店员" },
+          { thai: "A: อยู่ตรงไหน\nB: ชั้นสอง", speak: "อยู่ตรงไหน ชั้นสอง", chinese: "A：在哪里？B：第二排。", english: "A: Where is it? B: Row two.", roman: "yoo trong nai / chan song", usage: "找货架" },
+          { thai: "A: ขอหลอดด้วย\nB: ได้", speak: "ขอหลอดด้วย ได้", chinese: "A：给我吸管。B：可以。", english: "A: Please give me a straw. B: Okay.", roman: "kho lot duay / dai", usage: "买饮料" },
+          { thai: "A: อุ่นให้หน่อย\nB: รอสองนาที", speak: "อุ่นให้หน่อย รอสองนาที", chinese: "A：帮我加热。B：等两分钟。", english: "A: Please heat it up. B: Wait two minutes.", roman: "oon hai noi / ro song naa-thee", usage: "饭盒加热" },
+          { thai: "A: ไม่เอาถุง\nB: โอเค", speak: "ไม่เอาถุง โอเค", chinese: "A：不要袋子。B：好的。", english: "A: No bag. B: Okay.", roman: "mai ao thung / okay", usage: "结账时说明" }
+        ]
+      },
+      13: {
+        theme: "外卖骑手小对话",
+        phrases: [
+          { thai: "A: ผมอยู่หน้าตึก\nB: เห็นแล้ว", speak: "ผมอยู่หน้าตึก เห็นแล้ว", chinese: "A：我在楼前。B：看到了。", english: "A: I am in front of the building. B: I see you.", roman: "phom yoo naa teuk / hen laew", usage: "找骑手" },
+          { thai: "A: วางไว้ที่ล็อบบี้ได้\nB: ได้", speak: "วางไว้ที่ล็อบบี้ได้ ได้", chinese: "A：放大厅就行。B：可以。", english: "A: You can leave it in the lobby. B: Okay.", roman: "waang wai thee lobby dai / dai", usage: "无接触取餐" },
+          { thai: "A: โทรหาผมได้\nB: โอเค", speak: "โทรหาผมได้ โอเค", chinese: "A：可以打给我。B：好的。", english: "A: You can call me. B: Okay.", roman: "tho haa phom dai / okay", usage: "让骑手电话联系" },
+          { thai: "A: ผมจะลงไปรับ\nB: รออยู่", speak: "ผมจะลงไปรับ รออยู่", chinese: "A：我下去拿。B：我在等。", english: "A: I will go down to pick it up. B: I am waiting.", roman: "phom ja long pai rap / ro yoo", usage: "下楼取外卖" },
+          { thai: "A: ผมมาช้า ขอโทษ\nB: ไม่เป็นไร", speak: "ผมมาช้า ขอโทษ ไม่เป็นไร", chinese: "A：我来晚了，不好意思。B：没关系。", english: "A: I came late, sorry. B: No problem.", roman: "phom maa chaa kho thot / mai pen rai", usage: "让骑手久等" }
+        ]
+      },
+      14: {
+        theme: "咖啡店办公对话",
+        phrases: [
+          { thai: "A: มีปลั๊กไหม\nB: มี ตรงนั้น", speak: "มีปลั๊กไหม มี ตรงนั้น", chinese: "A：有插座吗？B：有，在那边。", english: "A: Is there a power outlet? B: Yes, over there.", roman: "mee plug mai / mee trong nan", usage: "找办公座位" },
+          { thai: "A: ขอไวไฟหน่อย\nB: รหัสอยู่บนโต๊ะ", speak: "ขอไวไฟหน่อย รหัสอยู่บนโต๊ะ", chinese: "A：给我 Wi-Fi。B：密码在桌上。", english: "A: Please give me the Wi-Fi. B: The password is on the table.", roman: "kho wai-fai noi / ra-hat yoo bon toh", usage: "问 Wi-Fi" },
+          { thai: "A: นั่งตรงนี้ได้ไหม\nB: ได้", speak: "นั่งตรงนี้ได้ไหม ได้", chinese: "A：可以坐这里吗？B：可以。", english: "A: Can I sit here? B: Yes.", roman: "nang trong nee dai mai / dai", usage: "确认座位" },
+          { thai: "A: เอากาแฟเย็นหนึ่งแก้ว\nB: หวานปกติไหม", speak: "เอากาแฟเย็นหนึ่งแก้ว หวานปกติไหม", chinese: "A：要一杯冰咖啡。B：正常甜吗？", english: "A: One iced coffee. B: Normal sweetness?", roman: "ao gaa-fae yen neung gaew / waan pa-ga-ti mai", usage: "点咖啡" },
+          { thai: "A: หวานน้อย\nB: ได้", speak: "หวานน้อย ได้", chinese: "A：少糖。B：可以。", english: "A: Less sweet. B: Okay.", roman: "waan noi / dai", usage: "控制甜度" }
+        ]
+      },
+      15: {
+        theme: "理发店小对话",
+        phrases: [
+          { thai: "A: ตัดสั้นนิดหน่อย\nB: ประมาณนี้ไหม", speak: "ตัดสั้นนิดหน่อย ประมาณนี้ไหม", chinese: "A：剪短一点点。B：大概这样吗？", english: "A: Cut it a little shorter. B: About like this?", roman: "tat san nit noi / pra-maan nee mai", usage: "说明长度" },
+          { thai: "A: เอาทรงเดิม\nB: ได้", speak: "เอาทรงเดิม ได้", chinese: "A：按原来的发型。B：可以。", english: "A: Keep the same hairstyle. B: Okay.", roman: "ao song derm / dai", usage: "保持发型" },
+          { thai: "A: อย่าสั้นเกินไป\nB: เข้าใจ", speak: "อย่าสั้นเกินไป เข้าใจ", chinese: "A：不要太短。B：明白。", english: "A: Do not cut it too short. B: I understand.", roman: "yaa san gern pai / khao jai", usage: "避免剪太短" },
+          { thai: "A: โกนหนวดด้วย\nB: ได้", speak: "โกนหนวดด้วย ได้", chinese: "A：也刮胡子。B：可以。", english: "A: Shave my beard too. B: Okay.", roman: "gohn nuat duay / dai", usage: "加服务" },
+          { thai: "A: ดีแล้ว ขอบคุณ\nB: ขอบคุณ", speak: "ดีแล้ว ขอบคุณ ขอบคุณ", chinese: "A：可以了，谢谢。B：谢谢。", english: "A: It is good, thank you. B: Thank you.", roman: "dee laew khop khun / khop khun", usage: "确认完成" }
+        ]
+      },
+      16: {
+        theme: "药店小对话",
+        phrases: [
+          { thai: "A: ผมปวดหัว\nB: ปวดนานไหม", speak: "ผมปวดหัว ปวดนานไหม", chinese: "A：我头疼。B：疼多久了？", english: "A: I have a headache. B: How long has it hurt?", roman: "phom puat hua / puat naan mai", usage: "描述症状" },
+          { thai: "A: ผมเจ็บคอ\nB: มีไข้ไหม", speak: "ผมเจ็บคอ มีไข้ไหม", chinese: "A：我喉咙痛。B：有发烧吗？", english: "A: I have a sore throat. B: Do you have a fever?", roman: "phom jep kho / mee khai mai", usage: "药店问诊" },
+          { thai: "A: มียาแก้ปวดไหม\nB: มี", speak: "มียาแก้ปวดไหม มี", chinese: "A：有止痛药吗？B：有。", english: "A: Do you have painkillers? B: Yes.", roman: "mee yaa gae puat mai / mee", usage: "买药" },
+          { thai: "A: กินยาวันละกี่ครั้ง\nB: วันละสองครั้ง", speak: "กินยาวันละกี่ครั้ง วันละสองครั้ง", chinese: "A：药一天吃几次？B：一天两次。", english: "A: How many times a day? B: Twice a day.", roman: "gin yaa wan la gee khrang / wan la song khrang", usage: "问用法" },
+          { thai: "A: ผมแพ้ยานี้\nB: งั้นอย่ากิน", speak: "ผมแพ้ยานี้ งั้นอย่ากิน", chinese: "A：我对这个药过敏。B：那不要吃。", english: "A: I am allergic to this medicine. B: Then do not take it.", roman: "phom phae yaa nee / ngan yaa gin", usage: "说明过敏" }
+        ]
+      },
+      17: {
+        theme: "健身房小对话",
+        phrases: [
+          { thai: "A: สมัครสมาชิกได้ไหม\nB: ได้", speak: "สมัครสมาชิกได้ไหม ได้", chinese: "A：可以办会员吗？B：可以。", english: "A: Can I sign up for membership? B: Yes.", roman: "sa-mak sa-maa-chik dai mai / dai", usage: "咨询会员" },
+          { thai: "A: เดือนละเท่าไหร่\nB: หนึ่งพันบาท", speak: "เดือนละเท่าไหร่ หนึ่งพันบาท", chinese: "A：一个月多少钱？B：一千泰铢。", english: "A: How much per month? B: One thousand baht.", roman: "duean la thao-rai / neung phan baat", usage: "问月费" },
+          { thai: "A: มีเทรนเนอร์ไหม\nB: มี", speak: "มีเทรนเนอร์ไหม มี", chinese: "A：有教练吗？B：有。", english: "A: Do you have trainers? B: Yes.", roman: "mee trainer mai / mee", usage: "问私教" },
+          { thai: "A: ผมอยากลดน้ำหนัก\nB: เริ่มช้า ๆ ก่อน", speak: "ผมอยากลดน้ำหนัก เริ่มช้า ๆ ก่อน", chinese: "A：我想减肥。B：先慢慢开始。", english: "A: I want to lose weight. B: Start slowly first.", roman: "phom yaak lot nam nak / rerm chaa chaa gon", usage: "说目标" },
+          { thai: "A: วันนี้ผมเหนื่อยมาก\nB: พักก่อน", speak: "วันนี้ผมเหนื่อยมาก พักก่อน", chinese: "A：今天我很累。B：先休息。", english: "A: I am very tired today. B: Rest first.", roman: "wan nee phom nueai maak / phak gon", usage: "表达状态" }
+        ]
+      },
+      18: {
+        theme: "朋友聊天小对话",
+        phrases: [
+          { thai: "A: วันนี้เป็นยังไงบ้าง\nB: ดีมาก", speak: "วันนี้เป็นยังไงบ้าง ดีมาก", chinese: "A：今天怎么样？B：很好。", english: "A: How is your day? B: Very good.", roman: "wan nee pen yang ngai baang / dee maak", usage: "日常寒暄" },
+          { thai: "A: ไปกินข้าวกันไหม\nB: ไป", speak: "ไปกินข้าวกันไหม ไป", chinese: "A：一起吃饭吗？B：去。", english: "A: Want to eat together? B: Yes.", roman: "pai gin khao gan mai / pai", usage: "邀请吃饭" },
+          { thai: "A: ผมชอบอาหารไทย\nB: ชอบเมนูอะไร", speak: "ผมชอบอาหารไทย ชอบเมนูอะไร", chinese: "A：我喜欢泰国菜。B：喜欢什么菜？", english: "A: I like Thai food. B: What dish do you like?", roman: "phom chorp aa-haan thai / chorp menu a-rai", usage: "聊喜好" },
+          { thai: "A: อากาศร้อนมาก\nB: ใช่ ร้อนจริง", speak: "อากาศร้อนมาก ใช่ ร้อนจริง", chinese: "A：天气很热。B：是，真的热。", english: "A: The weather is very hot. B: Yes, really hot.", roman: "aa-gaat ron maak / chai ron jing", usage: "曼谷高频闲聊" },
+          { thai: "A: ไว้เจอกันใหม่\nB: เจอกัน", speak: "ไว้เจอกันใหม่ เจอกัน", chinese: "A：下次见。B：回头见。", english: "A: See you next time. B: See you.", roman: "wai jer gan mai / jer gan", usage: "轻松告别" }
+        ]
+      },
+      19: {
+        theme: "快递小对话",
+        phrases: [
+          { thai: "A: ผมมารับพัสดุ\nB: ชื่ออะไร", speak: "ผมมารับพัสดุ ชื่ออะไร", chinese: "A：我来取快递。B：叫什么名字？", english: "A: I came to pick up a parcel. B: What name?", roman: "phom maa rap phat-sa-du / cheu a-rai", usage: "取快递" },
+          { thai: "A: ต้องเซ็นชื่อไหม\nB: ต้อง", speak: "ต้องเซ็นชื่อไหม ต้อง", chinese: "A：需要签名吗？B：需要。", english: "A: Do I need to sign? B: Yes.", roman: "tong sen cheu mai / tong", usage: "签收" },
+          { thai: "A: ส่งของไปจีนได้ไหม\nB: ได้", speak: "ส่งของไปจีนได้ไหม ได้", chinese: "A：可以寄东西到中国吗？B：可以。", english: "A: Can I send things to China? B: Yes.", roman: "song khong pai jeen dai mai / dai", usage: "国际寄件" },
+          { thai: "A: ค่าส่งเท่าไหร่\nB: สองร้อยบาท", speak: "ค่าส่งเท่าไหร่ สองร้อยบาท", chinese: "A：运费多少钱？B：两百泰铢。", english: "A: How much is shipping? B: Two hundred baht.", roman: "khaa song thao-rai / song roi baat", usage: "问运费" },
+          { thai: "A: ของแตกง่าย\nB: จะติดสติกเกอร์ให้", speak: "ของแตกง่าย จะติดสติกเกอร์ให้", chinese: "A：这个易碎。B：我会贴标签。", english: "A: This is fragile. B: I will put a sticker on it.", roman: "khong taek ngai / ja tit sticker hai", usage: "寄易碎品" }
+        ]
+      },
+      20: {
+        theme: "周末安排小对话",
+        phrases: [
+          { thai: "A: สุดสัปดาห์นี้คุณไปไหน\nB: ไปเดินห้าง", speak: "สุดสัปดาห์นี้คุณไปไหน ไปเดินห้าง", chinese: "A：这个周末你去哪？B：去逛商场。", english: "A: Where are you going this weekend? B: I will walk around the mall.", roman: "sut sap-daa nee khun pai nai / pai dern haang", usage: "聊周末计划" },
+          { thai: "A: ผมอยากไปเดินห้าง\nB: ไปห้างไหน", speak: "ผมอยากไปเดินห้าง ไปห้างไหน", chinese: "A：我想去逛商场。B：去哪家商场？", english: "A: I want to go to the mall. B: Which mall?", roman: "phom yaak pai dern haang / pai haang nai", usage: "说计划" },
+          { thai: "A: ไปด้วยกันไหม\nB: ได้", speak: "ไปด้วยกันไหม ได้", chinese: "A：一起去吗？B：可以。", english: "A: Want to go together? B: Yes.", roman: "pai duay gan mai / dai", usage: "邀请同行" },
+          { thai: "A: ผมต้องทำงาน\nB: สู้ ๆ", speak: "ผมต้องทำงาน สู้ ๆ", chinese: "A：我得工作。B：加油。", english: "A: I have to work. B: Keep going.", roman: "phom tong tham ngaan / soo soo", usage: "周末还要工作" },
+          { thai: "A: พักผ่อนให้เต็มที่นะ\nB: ขอบคุณ", speak: "พักผ่อนให้เต็มที่นะ ขอบคุณ", chinese: "A：好好休息。B：谢谢。", english: "A: Have a good rest. B: Thank you.", roman: "phak phon hai tem thee na / khop khun", usage: "关心同事朋友" }
+        ]
+      }
+    };
+
+    const realDialogueLessons = realLessons.map((lesson) => {
+      const override = dialogueLessonOverrides[lesson.day];
+      return override ? { ...lesson, ...override } : lesson;
+    });
+
     function categoryForDay(day) {
       if (day <= 10) return "基础生存口语";
       if (day <= 25) return "曼谷日常生活";
@@ -1003,41 +1142,163 @@
       return "自由表达和复盘";
     }
 
-    const placeholderThemes = {
-      "曼谷日常生活": ["房租水电", "维修沟通", "交通换乘", "朋友邀约", "日常复盘"],
-      "招聘泰国主播": ["发布招聘", "约面试时间", "询问经验", "试播沟通", "薪资与排班"],
-      "TikTok直播间管理": ["开播准备", "商品讲解", "催单转化", "评论互动", "下播复盘"],
-      "办公室管理与团队沟通": ["安排任务", "确认进度", "反馈问题", "会议同步", "团队激励"],
-      "签证、银行、政府办事": ["准备材料", "银行开户", "签证续签", "排队窗口", "确认结果"],
-      "自由表达和复盘": ["表达想法", "总结今天", "说明原因", "提出建议", "100天复盘"]
+    const generatedLessonPacks = {
+      "曼谷日常生活": [
+        { theme: "房租水电", phrases: [
+          ["A: ค่าไฟเดือนนี้เท่าไหร่\nB: ประมาณพันสอง", "ค่าไฟเดือนนี้เท่าไหร่ ประมาณพันสอง", "A：这个月电费多少？B：大概一千二。", "A: How much is this month's electricity bill? B: About 1,200.", "khaa fai duean nee thao-rai / pra-maan phan song", "问生活费用"],
+          ["A: ค่าน้ำจ่ายที่ไหน\nB: จ่ายในแอปได้", "ค่าน้ำจ่ายที่ไหน จ่ายในแอปได้", "A：水费在哪里交？B：可以在 App 里交。", "A: Where do I pay the water bill? B: You can pay in the app.", "khaa nam jaai thee nai / jaai nai app dai", "问缴费方式"],
+          ["A: อินเทอร์เน็ตช้ามาก\nB: เดี๋ยวโทรแจ้งให้", "อินเทอร์เน็ตช้ามาก เดี๋ยวโทรแจ้งให้", "A：网很慢。B：我等下帮你报修。", "A: The internet is very slow. B: I will call to report it.", "internet chaa maak / diao tho jaeng hai", "网络问题"],
+          ["A: ห้องมีปัญหา\nB: ปัญหาอะไร", "ห้องมีปัญหา ปัญหาอะไร", "A：房间有问题。B：什么问题？", "A: There is a problem with the room. B: What problem?", "hong mee pan-haa / pan-haa a-rai", "向物业说明"],
+          ["A: พรุ่งนี้ช่างมาได้ไหม\nB: ได้ ช่วงเช้า", "พรุ่งนี้ช่างมาได้ไหม ได้ ช่วงเช้า", "A：明天维修能来吗？B：可以，上午。", "A: Can the technician come tomorrow? B: Yes, in the morning.", "phrung nee chang maa dai mai / dai chuang chao", "约维修"]
+        ], words: [["ค่าไฟ","电费","khaa fai"],["ค่าน้ำ","水费","khaa nam"],["อินเทอร์เน็ต","网络","internet"],["ช่าง","维修师傅","chang"],["พรุ่งนี้","明天","phrung nee"]] },
+        { theme: "维修沟通", phrases: [
+          ["A: แอร์ไม่เย็น\nB: เปิดนานหรือยัง", "แอร์ไม่เย็น เปิดนานหรือยัง", "A：空调不冷。B：开多久了？", "A: The AC is not cold. B: How long has it been on?", "air mai yen / perd naan reu yang", "报修空调"],
+          ["A: น้ำรั่วตรงนี้\nB: เดี๋ยวให้ช่างดู", "น้ำรั่วตรงนี้ เดี๋ยวให้ช่างดู", "A：这里漏水。B：等下让师傅看。", "A: Water is leaking here. B: I will have the technician check it.", "nam rua trong nee / diao hai chang doo", "报修漏水"],
+          ["A: ไฟเสีย\nB: เปลี่ยนหลอดไฟได้", "ไฟเสีย เปลี่ยนหลอดไฟได้", "A：灯坏了。B：可以换灯泡。", "A: The light is broken. B: We can change the bulb.", "fai sia / plian lot fai dai", "灯具问题"],
+          ["A: วันนี้ซ่อมได้ไหม\nB: วันนี้เต็มแล้ว", "วันนี้ซ่อมได้ไหม วันนี้เต็มแล้ว", "A：今天能修吗？B：今天排满了。", "A: Can you fix it today? B: Today is full.", "wan nee som dai mai / wan nee tem laew", "确认维修时间"],
+          ["A: ใช้เวลานานไหม\nB: ประมาณครึ่งชั่วโมง", "ใช้เวลานานไหม ประมาณครึ่งชั่วโมง", "A：要很久吗？B：大概半小时。", "A: Will it take long? B: About half an hour.", "chai welaa naan mai / pra-maan khreung chua-mong", "问耗时"]
+        ], words: [["แอร์","空调","air"],["น้ำรั่ว","漏水","nam rua"],["ไฟเสีย","灯坏了","fai sia"],["ซ่อม","维修","som"],["ครึ่งชั่วโมง","半小时","khreung chua-mong"]] },
+        { theme: "交通换乘", phrases: [
+          ["A: ไปอโศกยังไง\nB: นั่ง BTS ไป", "ไปอโศกยังไง นั่ง BTS ไป", "A：去 Asok 怎么走？B：坐 BTS 去。", "A: How do I get to Asok? B: Take the BTS.", "pai asok yang ngai / nang BTS pai", "问路线"],
+          ["A: ต้องเปลี่ยนสายไหม\nB: ต้องเปลี่ยนที่สยาม", "ต้องเปลี่ยนสายไหม ต้องเปลี่ยนที่สยาม", "A：要换线吗？B：要在暹罗换。", "A: Do I need to transfer? B: Transfer at Siam.", "tong plian saai mai / tong plian thee siam", "换乘"],
+          ["A: แท็กซี่แพงไหม\nB: รถติด แพงหน่อย", "แท็กซี่แพงไหม รถติด แพงหน่อย", "A：打车贵吗？B：堵车，会有点贵。", "A: Is taxi expensive? B: Traffic is bad, a bit expensive.", "taxi phaeng mai / rot tit phaeng noi", "判断交通方式"],
+          ["A: ถึงแล้วบอกผมด้วย\nB: ได้", "ถึงแล้วบอกผมด้วย ได้", "A：到了告诉我。B：可以。", "A: Tell me when you arrive. B: Okay.", "theung laew bok phom duay / dai", "约人见面"],
+          ["A: ผมรอหน้าห้าง\nB: กำลังไป", "ผมรอหน้าห้าง กำลังไป", "A：我在商场前等。B：正在过去。", "A: I am waiting in front of the mall. B: I am on the way.", "phom ro naa haang / gam-lang pai", "等待对方"]
+        ], words: [["เปลี่ยนสาย","换线","plian saai"],["รถติด","堵车","rot tit"],["ถึงแล้ว","到了","theung laew"],["กำลังไป","正在去","gam-lang pai"],["หน้าห้าง","商场前","naa haang"]] }
+      ],
+      "招聘泰国主播": [
+        { theme: "发布招聘", phrases: [
+          ["A: สนใจงานไลฟ์ไหม\nB: สนใจ", "สนใจงานไลฟ์ไหม สนใจ", "A：对直播工作感兴趣吗？B：感兴趣。", "A: Are you interested in live work? B: Yes.", "son jai ngaan live mai / son jai", "招聘开场"],
+          ["A: เคยไลฟ์มาก่อนไหม\nB: เคย", "เคยไลฟ์มาก่อนไหม เคย", "A：以前直播过吗？B：直播过。", "A: Have you done live before? B: Yes.", "khoey live maa gon mai / khoey", "问经验"],
+          ["A: พูดหน้ากล้องได้ไหม\nB: ได้", "พูดหน้ากล้องได้ไหม ได้", "A：能对着镜头说话吗？B：能。", "A: Can you speak on camera? B: Yes.", "phoot naa glong dai mai / dai", "问镜头表现"],
+          ["A: ทำงานกี่โมงได้\nB: หกโมงเย็น", "ทำงานกี่โมงได้ หกโมงเย็น", "A：几点能上班？B：晚上六点。", "A: What time can you work? B: 6 PM.", "tham ngaan gee mong dai / hok mong yen", "问时间"],
+          ["A: ส่งโปรไฟล์ให้หน่อย\nB: ได้", "ส่งโปรไฟล์ให้หน่อย ได้", "A：发我简历资料。B：可以。", "A: Send me your profile. B: Okay.", "song profile hai noi / dai", "收资料"]
+        ], words: [["สนใจ","感兴趣","son jai"],["งานไลฟ์","直播工作","ngaan live"],["หน้ากล้อง","镜头前","naa glong"],["โปรไฟล์","资料","profile"],["ประสบการณ์","经验","pra-sop-gaan"]] },
+        { theme: "约面试时间", phrases: [
+          ["A: สะดวกสัมภาษณ์วันไหน\nB: วันพรุ่งนี้", "สะดวกสัมภาษณ์วันไหน วันพรุ่งนี้", "A：哪天方便面试？B：明天。", "A: Which day is convenient for interview? B: Tomorrow.", "sa-duak sam-phaat wan nai / wan phrung nee", "约面试"],
+          ["A: มากี่โมงได้\nB: บ่ายสาม", "มากี่โมงได้ บ่ายสาม", "A：几点能来？B：下午三点。", "A: What time can you come? B: 3 PM.", "maa gee mong dai / baai saam", "确认时间"],
+          ["A: มาที่ออฟฟิศได้ไหม\nB: ได้", "มาที่ออฟฟิศได้ไหม ได้", "A：能来办公室吗？B：可以。", "A: Can you come to the office? B: Yes.", "maa thee office dai mai / dai", "确认地点"],
+          ["A: ส่งโลเคชันให้แล้ว\nB: ขอบคุณ", "ส่งโลเคชันให้แล้ว ขอบคุณ", "A：位置发你了。B：谢谢。", "A: I sent the location. B: Thank you.", "song location hai laew / khop khun", "发定位"],
+          ["A: ถ้ามาช้า บอกผมก่อน\nB: ได้", "ถ้ามาช้า บอกผมก่อน ได้", "A：如果晚到，先告诉我。B：可以。", "A: If you are late, tell me first. B: Okay.", "thaa maa chaa bok phom gon / dai", "防止迟到"]
+        ], words: [["สัมภาษณ์","面试","sam-phaat"],["สะดวก","方便","sa-duak"],["ออฟฟิศ","办公室","office"],["โลเคชัน","位置","location"],["มาช้า","来晚","maa chaa"]] },
+        { theme: "试播沟通", phrases: [
+          ["A: ลองพูดขายกระเป๋าให้ดู\nB: ได้", "ลองพูดขายกระเป๋าให้ดู ได้", "A：试着卖包给我看。B：可以。", "A: Try selling the bag for me. B: Okay.", "long phoot khaai gra-pao hai doo / dai", "试播"],
+          ["A: เสียงดังขึ้นหน่อย\nB: โอเค", "เสียงดังขึ้นหน่อย โอเค", "A：声音大一点。B：好的。", "A: Speak louder. B: Okay.", "siang dang kheun noi / okay", "调整声音"],
+          ["A: ยิ้มมากขึ้น\nB: ได้", "ยิ้มมากขึ้น ได้", "A：多笑一点。B：可以。", "A: Smile more. B: Okay.", "yim maak kheun / dai", "调整状态"],
+          ["A: พูดเร็วไปนิดหนึ่ง\nB: จะพูดช้าลง", "พูดเร็วไปนิดหนึ่ง จะพูดช้าลง", "A：说得有点快。B：我会慢一点。", "A: You speak a bit fast. B: I will slow down.", "phoot reo pai nit neung / ja phoot chaa long", "反馈语速"],
+          ["A: วันนี้ลองไลฟ์หนึ่งชั่วโมง\nB: ได้", "วันนี้ลองไลฟ์หนึ่งชั่วโมง ได้", "A：今天试播一小时。B：可以。", "A: Today try live for one hour. B: Okay.", "wan nee long live neung chua-mong / dai", "安排试播"]
+        ], words: [["ลอง","试一下","long"],["ขาย","卖","khaai"],["เสียงดัง","声音大","siang dang"],["ยิ้ม","笑","yim"],["ช้าลง","慢下来","chaa long"]] }
+      ],
+      "TikTok直播间管理": [
+        { theme: "开播准备", phrases: [
+          ["A: ไฟพร้อมไหม\nB: พร้อม", "ไฟพร้อมไหม พร้อม", "A：灯光准备好了吗？B：好了。", "A: Are the lights ready? B: Ready.", "fai phrom mai / phrom", "开播检查"],
+          ["A: กล้องชัดไหม\nB: ชัด", "กล้องชัดไหม ชัด", "A：镜头清楚吗？B：清楚。", "A: Is the camera clear? B: Clear.", "glong chat mai / chat", "检查画面"],
+          ["A: สินค้าอยู่ครบไหม\nB: ครบ", "สินค้าอยู่ครบไหม ครบ", "A：商品齐了吗？B：齐了。", "A: Are all products here? B: Complete.", "sin-khaa yoo khrop mai / khrop", "商品准备"],
+          ["A: เริ่มไลฟ์ได้ไหม\nB: ได้", "เริ่มไลฟ์ได้ไหม ได้", "A：可以开播了吗？B：可以。", "A: Can we start live? B: Yes.", "rerm live dai mai / dai", "开播确认"],
+          ["A: วันนี้เน้นรุ่นนี้\nB: เข้าใจ", "วันนี้เน้นรุ่นนี้ เข้าใจ", "A：今天重点推这款。B：明白。", "A: Today focus on this model. B: Understood.", "wan nee nen roon nee / khao jai", "开播重点"]
+        ], words: [["ไฟ","灯光","fai"],["กล้อง","镜头","glong"],["สินค้า","商品","sin-khaa"],["เริ่ม","开始","rerm"],["เน้น","重点","nen"]] },
+        { theme: "评论互动", phrases: [
+          ["A: ลูกค้าถามราคา\nB: ตอบเลย", "ลูกค้าถามราคา ตอบเลย", "A：客户问价格。B：马上回答。", "A: Customer asks price. B: Answer now.", "look-khaa thaam raa-khaa / top loey", "看评论"],
+          ["A: มีคนถามสีดำ\nB: หยิบสีดำมา", "มีคนถามสีดำ หยิบสีดำมา", "A：有人问黑色。B：拿黑色来。", "A: Someone asks about black. B: Bring black.", "mee khon thaam see dam / yip see dam maa", "拿货展示"],
+          ["A: ตอบคอมเมนต์เร็วขึ้น\nB: ได้", "ตอบคอมเมนต์เร็วขึ้น ได้", "A：评论回复快一点。B：可以。", "A: Reply to comments faster. B: Okay.", "top comment reo kheun / dai", "控场反馈"],
+          ["A: บอกโปรโมชันอีกครั้ง\nB: ได้", "บอกโปรโมชันอีกครั้ง ได้", "A：再说一次优惠。B：可以。", "A: Say the promotion again. B: Okay.", "bok promotion eek khrang / dai", "重复卖点"],
+          ["A: อ่านชื่อคนดูด้วย\nB: โอเค", "อ่านชื่อคนดูด้วย โอเค", "A：读一下观众名字。B：好的。", "A: Read viewers' names too. B: Okay.", "aan cheu khon doo duay / okay", "增强互动"]
+        ], words: [["ลูกค้า","客户","look-khaa"],["คอมเมนต์","评论","comment"],["โปรโมชัน","优惠","promotion"],["คนดู","观众","khon doo"],["ตอบ","回答","top"]] },
+        { theme: "下播复盘", phrases: [
+          ["A: วันนี้ยอดขายเท่าไหร่\nB: ห้าหมื่นบาท", "วันนี้ยอดขายเท่าไหร่ ห้าหมื่นบาท", "A：今天销售额多少？B：五万泰铢。", "A: How much sales today? B: 50,000 baht.", "wan nee yot khaai thao-rai / haa meun baat", "复盘销售"],
+          ["A: ช่วงไหนขายดีที่สุด\nB: ช่วงสองทุ่ม", "ช่วงไหนขายดีที่สุด ช่วงสองทุ่ม", "A：哪个时段卖最好？B：晚上八点。", "A: Which time sold best? B: 8 PM.", "chuang nai khaai dee thee sut / chuang song thum", "分析时段"],
+          ["A: ปัญหาคืออะไร\nB: เสียงเบา", "ปัญหาคืออะไร เสียงเบา", "A：问题是什么？B：声音小。", "A: What was the problem? B: Low voice.", "pan-haa kheu a-rai / siang bao", "找问题"],
+          ["A: พรุ่งนี้ต้องแก้อะไร\nB: เตรียมสินค้าเร็วขึ้น", "พรุ่งนี้ต้องแก้อะไร เตรียมสินค้าเร็วขึ้น", "A：明天要改什么？B：更早准备商品。", "A: What should we fix tomorrow? B: Prepare products faster.", "phrung nee tong gae a-rai / triam sin-khaa reo kheun", "定改进"],
+          ["A: วันนี้ทำได้ดี\nB: ขอบคุณ", "วันนี้ทำได้ดี ขอบคุณ", "A：今天做得不错。B：谢谢。", "A: You did well today. B: Thank you.", "wan nee tham dai dee / khop khun", "正向反馈"]
+        ], words: [["ยอดขาย","销售额","yot khaai"],["ช่วง","时段","chuang"],["ปัญหา","问题","pan-haa"],["แก้","修正","gae"],["ทำได้ดี","做得好","tham dai dee"]] }
+      ],
+      "办公室管理与团队沟通": [
+        { theme: "安排任务", phrases: [
+          ["A: วันนี้คุณทำอันนี้ก่อน\nB: ได้", "วันนี้คุณทำอันนี้ก่อน ได้", "A：今天你先做这个。B：可以。", "A: Today do this first. B: Okay.", "wan nee khun tham an nee gon / dai", "安排优先级"],
+          ["A: งานนี้ด่วนไหม\nB: ด่วน", "งานนี้ด่วนไหม ด่วน", "A：这个工作急吗？B：急。", "A: Is this urgent? B: Yes.", "ngaan nee duan mai / duan", "确认紧急度"],
+          ["A: เสร็จกี่โมง\nB: ก่อนห้าโมง", "เสร็จกี่โมง ก่อนห้าโมง", "A：几点完成？B：五点前。", "A: What time will it be done? B: Before 5.", "set gee mong / gon haa mong", "问截止时间"],
+          ["A: ถ้ามีปัญหา บอกผมทันที\nB: ได้", "ถ้ามีปัญหา บอกผมทันที ได้", "A：有问题立刻告诉我。B：可以。", "A: If there is a problem, tell me immediately. B: Okay.", "thaa mee pan-haa bok phom than-thee / dai", "风险管理"],
+          ["A: ส่งไฟล์ในไลน์ให้หน่อย\nB: ส่งแล้ว", "ส่งไฟล์ในไลน์ให้หน่อย ส่งแล้ว", "A：把文件发 Line。B：发了。", "A: Send the file on Line. B: Sent.", "song file nai line hai noi / song laew", "传文件"]
+        ], words: [["ด่วน","急","duan"],["เสร็จ","完成","set"],["ทันที","立刻","than-thee"],["ส่งไฟล์","发文件","song file"],["ก่อน","之前","gon"]] },
+        { theme: "确认进度", phrases: [
+          ["A: งานไปถึงไหนแล้ว\nB: เกือบเสร็จแล้ว", "งานไปถึงไหนแล้ว เกือบเสร็จแล้ว", "A：工作到哪了？B：快完成了。", "A: How far is the work? B: Almost done.", "ngaan pai theung nai laew / geuap set laew", "查进度"],
+          ["A: ต้องการให้ช่วยไหม\nB: ต้องการ", "ต้องการให้ช่วยไหม ต้องการ", "A：需要我帮忙吗？B：需要。", "A: Do you need help? B: Yes.", "tong gaan hai chuay mai / tong gaan", "支援团队"],
+          ["A: ทำไมช้า\nB: รอข้อมูล", "ทำไมช้า รอข้อมูล", "A：为什么慢？B：在等资料。", "A: Why is it slow? B: Waiting for information.", "tham mai chaa / ro kho-moon", "问原因"],
+          ["A: อัปเดตทุกชั่วโมง\nB: ได้", "อัปเดตทุกชั่วโมง ได้", "A：每小时更新。B：可以。", "A: Update every hour. B: Okay.", "update thuk chua-mong / dai", "跟进"],
+          ["A: วันนี้ต้องปิดงานนี้\nB: เข้าใจ", "วันนี้ต้องปิดงานนี้ เข้าใจ", "A：今天必须结掉这个。B：明白。", "A: We must close this today. B: Understood.", "wan nee tong pit ngaan nee / khao jai", "设截止"]
+        ], words: [["เกือบ","快要","geuap"],["ข้อมูล","资料","kho-moon"],["อัปเดต","更新","update"],["ทุกชั่วโมง","每小时","thuk chua-mong"],["ปิดงาน","收尾工作","pit ngaan"]] },
+        { theme: "会议同步", phrases: [
+          ["A: เริ่มประชุมได้ไหม\nB: ได้", "เริ่มประชุมได้ไหม ได้", "A：可以开始会议吗？B：可以。", "A: Can we start the meeting? B: Yes.", "rerm pra-chum dai mai / dai", "开会"],
+          ["A: วันนี้มีสามเรื่อง\nB: โอเค", "วันนี้มีสามเรื่อง โอเค", "A：今天有三件事。B：好的。", "A: Today there are three topics. B: Okay.", "wan nee mee saam reuang / okay", "会议开场"],
+          ["A: ใครรับผิดชอบเรื่องนี้\nB: ผมรับผิดชอบ", "ใครรับผิดชอบเรื่องนี้ ผมรับผิดชอบ", "A：谁负责这个？B：我负责。", "A: Who is responsible for this? B: I am.", "khrai rap phit chorp reuang nee / phom rap phit chorp", "分责任"],
+          ["A: สรุปให้หน่อย\nB: ได้", "สรุปให้หน่อย ได้", "A：总结一下。B：可以。", "A: Please summarize. B: Okay.", "sa-rup hai noi / dai", "会议总结"],
+          ["A: หลังประชุมส่งโน้ตให้ด้วย\nB: ได้", "หลังประชุมส่งโน้ตให้ด้วย ได้", "A：会后把纪要发我。B：可以。", "A: Send meeting notes after the meeting. B: Okay.", "lang pra-chum song note hai duay / dai", "会议纪要"]
+        ], words: [["ประชุม","会议","pra-chum"],["เรื่อง","事情/主题","reuang"],["รับผิดชอบ","负责","rap phit chorp"],["สรุป","总结","sa-rup"],["โน้ต","笔记","note"]] }
+      ],
+      "签证、银行、政府办事": [
+        { theme: "准备材料", phrases: [
+          ["A: ต้องใช้เอกสารอะไร\nB: พาสปอร์ตกับรูปถ่าย", "ต้องใช้เอกสารอะไร พาสปอร์ตกับรูปถ่าย", "A：需要什么材料？B：护照和照片。", "A: What documents are needed? B: Passport and photo.", "tong chai ek-ga-saan a-rai / passport gap roop thaai", "问材料"],
+          ["A: ถ่ายเอกสารได้ที่ไหน\nB: ข้างล่าง", "ถ่ายเอกสารได้ที่ไหน ข้างล่าง", "A：哪里能复印？B：楼下。", "A: Where can I copy documents? B: Downstairs.", "thaai ek-ga-saan dai thee nai / khaang laang", "复印"],
+          ["A: ต้องกรอกฟอร์มไหม\nB: ต้อง", "ต้องกรอกฟอร์มไหม ต้อง", "A：需要填表吗？B：需要。", "A: Do I need to fill out a form? B: Yes.", "tong grok form mai / tong", "填表"],
+          ["A: ลายเซ็นตรงไหน\nB: ตรงนี้", "ลายเซ็นตรงไหน ตรงนี้", "A：签哪里？B：这里。", "A: Where do I sign? B: Here.", "laai sen trong nai / trong nee", "签字"],
+          ["A: เอกสารครบไหม\nB: ครบแล้ว", "เอกสารครบไหม ครบแล้ว", "A：材料齐了吗？B：齐了。", "A: Are the documents complete? B: Complete.", "ek-ga-saan khrop mai / khrop laew", "确认材料"]
+        ], words: [["เอกสาร","文件/材料","ek-ga-saan"],["พาสปอร์ต","护照","passport"],["รูปถ่าย","照片","roop thaai"],["กรอกฟอร์ม","填表","grok form"],["ลายเซ็น","签名","laai sen"]] },
+        { theme: "银行开户", phrases: [
+          ["A: ผมอยากเปิดบัญชี\nB: มีพาสปอร์ตไหม", "ผมอยากเปิดบัญชี มีพาสปอร์ตไหม", "A：我想开户。B：有护照吗？", "A: I want to open an account. B: Do you have a passport?", "phom yaak perd ban-chee / mee passport mai", "开户"],
+          ["A: ใช้เบอร์โทรไทยได้ไหม\nB: ได้", "ใช้เบอร์โทรไทยได้ไหม ได้", "A：可以用泰国手机号吗？B：可以。", "A: Can I use a Thai phone number? B: Yes.", "chai ber tho thai dai mai / dai", "手机号"],
+          ["A: ต้องฝากเงินเท่าไหร่\nB: ห้าร้อยบาท", "ต้องฝากเงินเท่าไหร่ ห้าร้อยบาท", "A：要存多少钱？B：五百泰铢。", "A: How much deposit is needed? B: 500 baht.", "tong faak ngoen thao-rai / haa roi baat", "开户存款"],
+          ["A: ขอแอปธนาคารด้วย\nB: ได้", "ขอแอปธนาคารด้วย ได้", "A：也帮我开银行 App。B：可以。", "A: Please help me with the banking app too. B: Okay.", "kho app tha-na-khaan duay / dai", "手机银行"],
+          ["A: โอนเงินได้แล้วไหม\nB: ได้แล้ว", "โอนเงินได้แล้วไหม ได้แล้ว", "A：现在能转账了吗？B：可以了。", "A: Can I transfer now? B: Yes.", "ohn ngoen dai laew mai / dai laew", "测试转账"]
+        ], words: [["เปิดบัญชี","开户","perd ban-chee"],["เบอร์โทร","手机号","ber tho"],["ฝากเงิน","存钱","faak ngoen"],["ธนาคาร","银行","tha-na-khaan"],["โอนเงิน","转账","ohn ngoen"]] },
+        { theme: "签证续签", phrases: [
+          ["A: ผมมาต่อวีซ่า\nB: มีคิวนัดไหม", "ผมมาต่อวีซ่า มีคิวนัดไหม", "A：我来续签。B：有预约吗？", "A: I came to extend my visa. B: Do you have an appointment?", "phom maa tor visa / mee queue nat mai", "移民局"],
+          ["A: ต้องรอนานไหม\nB: ประมาณหนึ่งชั่วโมง", "ต้องรอนานไหม ประมาณหนึ่งชั่วโมง", "A：要等很久吗？B：大概一小时。", "A: Do I need to wait long? B: About one hour.", "tong ro naan mai / pra-maan neung chua-mong", "排队"],
+          ["A: ขาดเอกสารอะไรไหม\nB: ขาดสำเนาพาสปอร์ต", "ขาดเอกสารอะไรไหม ขาดสำเนาพาสปอร์ต", "A：缺什么材料吗？B：缺护照复印件。", "A: Is any document missing? B: Passport copy is missing.", "khaat ek-ga-saan a-rai mai / khaat sam-nao passport", "补材料"],
+          ["A: จ่ายค่าธรรมเนียมที่ไหน\nB: ช่องสาม", "จ่ายค่าธรรมเนียมที่ไหน ช่องสาม", "A：在哪里缴费？B：三号窗口。", "A: Where do I pay the fee? B: Counter three.", "jaai khaa tham-niam thee nai / chong saam", "缴费"],
+          ["A: วันนี้เสร็จไหม\nB: เสร็จ", "วันนี้เสร็จไหม เสร็จ", "A：今天能办好吗？B：能。", "A: Will it be finished today? B: Yes.", "wan nee set mai / set", "确认结果"]
+        ], words: [["ต่อวีซ่า","续签","tor visa"],["คิวนัด","预约号","queue nat"],["สำเนา","复印件","sam-nao"],["ค่าธรรมเนียม","手续费","khaa tham-niam"],["ช่อง","窗口","chong"]] }
+      ],
+      "自由表达和复盘": [
+        { theme: "表达想法", phrases: [
+          ["A: ผมคิดว่าแบบนี้ดีกว่า\nB: ทำไม", "ผมคิดว่าแบบนี้ดีกว่า ทำไม", "A：我觉得这样更好。B：为什么？", "A: I think this way is better. B: Why?", "phom khit waa baep nee dee gwaa / tham mai", "表达观点"],
+          ["A: ผมยังไม่แน่ใจ\nB: ลองคิดอีกที", "ผมยังไม่แน่ใจ ลองคิดอีกที", "A：我还不确定。B：再想想。", "A: I am not sure yet. B: Think again.", "phom yang mai nae jai / long khit eek tee", "表达不确定"],
+          ["A: ผมอยากลองวิธีใหม่\nB: ลองได้", "ผมอยากลองวิธีใหม่ ลองได้", "A：我想试新方法。B：可以试。", "A: I want to try a new method. B: You can try.", "phom yaak long wi-thee mai / long dai", "提出尝试"],
+          ["A: เรื่องนี้สำคัญมาก\nB: เข้าใจ", "เรื่องนี้สำคัญมาก เข้าใจ", "A：这件事很重要。B：明白。", "A: This is very important. B: Understood.", "reuang nee sam-khan maak / khao jai", "强调重点"],
+          ["A: ผมต้องฝึกมากขึ้น\nB: ใช่", "ผมต้องฝึกมากขึ้น ใช่", "A：我需要练更多。B：是。", "A: I need to practice more. B: Yes.", "phom tong feuk maak kheun / chai", "学习复盘"]
+        ], words: [["คิดว่า","认为","khit waa"],["ไม่แน่ใจ","不确定","mai nae jai"],["วิธีใหม่","新方法","wi-thee mai"],["สำคัญ","重要","sam-khan"],["ฝึก","练习","feuk"]] },
+        { theme: "总结今天", phrases: [
+          ["A: วันนี้คุณเรียนอะไร\nB: เรียนห้าประโยค", "วันนี้คุณเรียนอะไร เรียนห้าประโยค", "A：今天学了什么？B：学了五句。", "A: What did you learn today? B: Five sentences.", "wan nee khun rian a-rai / rian haa pra-yok", "每日总结"],
+          ["A: ประโยคไหนยากที่สุด\nB: ประโยคที่สาม", "ประโยคไหนยากที่สุด ประโยคที่สาม", "A：哪句最难？B：第三句。", "A: Which sentence is hardest? B: The third one.", "pra-yok nai yaak thee sut / pra-yok thee saam", "找难点"],
+          ["A: วันนี้กล้าพูดไหม\nB: กล้าขึ้น", "วันนี้กล้าพูดไหม กล้าขึ้น", "A：今天敢说了吗？B：更敢了。", "A: Did you dare to speak today? B: More than before.", "wan nee glaa phoot mai / glaa kheun", "建立信心"],
+          ["A: พรุ่งนี้จะฝึกอะไร\nB: ฝึกบทสนทนา", "พรุ่งนี้จะฝึกอะไร ฝึกบทสนทนา", "A：明天练什么？B：练对话。", "A: What will you practice tomorrow? B: Dialogues.", "phrung nee ja feuk a-rai / feuk bot son-tha-naa", "计划明天"],
+          ["A: หนึ่งร้อยวันต้องทำให้ได้\nB: ทำได้", "หนึ่งร้อยวันต้องทำให้ได้ ทำได้", "A：100天一定要做到。B：做得到。", "A: We must finish 100 days. B: We can do it.", "neung roi wan tong tham hai dai / tham dai", "100天复盘"]
+        ], words: [["เรียน","学习","rian"],["ประโยค","句子","pra-yok"],["ยากที่สุด","最难","yaak thee sut"],["กล้า","敢","glaa"],["บทสนทนา","对话","bot son-tha-naa"]] }
+      ]
     };
 
-    function makePlaceholderLesson(day) {
+    function packForDay(category, day) {
+      const packs = generatedLessonPacks[category];
+      return packs[(day - 1) % packs.length];
+    }
+
+    function makeGeneratedLesson(day) {
       const category = categoryForDay(day);
-      const themes = placeholderThemes[category];
-      const theme = themes[(day - 1) % themes.length];
+      const pack = packForDay(category, day);
       return {
         day,
         category,
-        theme: `${theme}（待补充）`,
-        phrases: Array.from({ length: 5 }, (_, index) => ({
-          thai: `ประโยคตัวอย่างวันที่ ${day} ข้อ ${index + 1}`,
-          chinese: `Day ${day} 第 ${index + 1} 句占位内容，后续替换为真实业务泰语`,
-          roman: `pra-yok tua-yang wan thee ${day} kho ${index + 1}`,
-          usage: `${category} - ${theme} 场景占位`
+        theme: pack.theme,
+        phrases: pack.phrases.map(([thai, speak, chinese, english, roman, usage]) => ({
+          thai, speak, chinese, english, roman, usage
         })),
-        words: Array.from({ length: 5 }, (_, index) => ({
-          thai: `คำศัพท์ ${day}-${index + 1}`,
-          chinese: `Day ${day} 第 ${index + 1} 个占位单词`,
-          roman: `kham-sap ${day}-${index + 1}`
-        })),
-        task: `完成 Day ${day}「${category} - ${theme}」的实战任务占位，后续替换为真实练习。`
+        words: pack.words.map(([thai, chinese, roman]) => ({ thai, chinese, roman })),
+        task: `今天录一条 30 秒 TikTok 练习视频：先读 Day ${day} 的 5 组对话，再选 1 组用自己的语气复述。`
       };
     }
 
     const lessons = [
-      ...realLessons,
-      ...Array.from({ length: 80 }, (_, index) => makePlaceholderLesson(index + 21))
+      ...realDialogueLessons,
+      ...Array.from({ length: 80 }, (_, index) => makeGeneratedLesson(index + 21))
     ];
 
     const STORAGE_KEY = "laofangThai100State";
@@ -1219,6 +1480,10 @@
       return `Literal English: ${phrase.chinese}`;
     }
 
+    function getSpeakText(phrase) {
+      return phrase.speak || phrase.thai.replaceAll("A:", "").replaceAll("B:", "").trim();
+    }
+
     function loadVoices() {
       return new Promise((resolve) => {
         if (!("speechSynthesis" in window)) {
@@ -1311,7 +1576,7 @@
             <p class="english">${getEnglishMeaning(phrase)}</p>
             <p class="usage">使用场景：${phrase.usage}</p>
           </div>
-          <button class="sound" data-speak="${escapeHtml(phrase.thai)}" aria-label="播放泰语发音">▶</button>
+          <button class="sound" data-speak="${escapeHtml(getSpeakText(phrase))}" aria-label="播放泰语发音">▶</button>
         </div>
       `).join("");
 
@@ -1360,7 +1625,7 @@
                     <p class="thai">${phrase.thai}</p>
                     <p class="chinese">${phrase.chinese}</p>
                   </div>
-                  <button class="sound" data-speak="${escapeHtml(phrase.thai)}" aria-label="播放复习句子发音">▶</button>
+                  <button class="sound" data-speak="${escapeHtml(getSpeakText(phrase))}" aria-label="播放复习句子发音">▶</button>
                 </div>
               `).join("")}
             </div>
@@ -1543,7 +1808,7 @@
       document.getElementById("quizAnswer").classList.add("show");
     });
     document.getElementById("quizSpeak").addEventListener("click", () => {
-      if (currentQuizPhrase) speakThai(currentQuizPhrase.thai);
+      if (currentQuizPhrase) speakThai(getSpeakText(currentQuizPhrase));
     });
 
     renderDaySelect();
