@@ -519,7 +519,7 @@
           <span class="day-tag" id="dayText"></span>
         </div>
 
-        <h3>今日5句泰语</h3>
+        <h3>今日泰语对话</h3>
         <div class="phrase-list" id="phraseList"></div>
 
         <div class="task-box">
@@ -1292,14 +1292,23 @@
           thai, speak, chinese, english, roman, usage
         })),
         words: pack.words.map(([thai, chinese, roman]) => ({ thai, chinese, roman })),
-        task: `今天录一条 30 秒 TikTok 练习视频：先读 Day ${day} 的 5 组对话，再选 1 组用自己的语气复述。`
+        task: `今天录一条 30 秒 TikTok 练习视频：先读 Day ${day} 的 3 组对话，再选 1 组用自己的语气复述。`
+      };
+    }
+
+    function compactLessonAfterDay10(lesson) {
+      if (lesson.day <= 10) return lesson;
+      return {
+        ...lesson,
+        phrases: lesson.phrases.slice(0, 3),
+        task: lesson.task.replace("5 组对话", "3 组对话")
       };
     }
 
     const lessons = [
       ...realDialogueLessons,
       ...Array.from({ length: 80 }, (_, index) => makeGeneratedLesson(index + 21))
-    ];
+    ].map(compactLessonAfterDay10);
 
     const STORAGE_KEY = "laofangThai100State";
     const encouragements = [
@@ -1657,7 +1666,7 @@
         `分类：${lesson.category}`,
         `主题：${lesson.theme}`,
         "",
-        "今日5句泰语：",
+        "今日泰语对话：",
         ...lesson.phrases.map((phrase, index) => `${index + 1}. ${phrase.thai}\n中文：${phrase.chinese}\n英文：${getEnglishMeaning(phrase)}\n发音：${phrase.roman}\n场景：${phrase.usage}`),
         "",
         "今日5个单词：",
